@@ -34,7 +34,7 @@ else
     {
         include("system/designer/head.php");
         include("system/designer/header.php");
-        include($app."/".$mod."/".$ctl."/".$init[$app][$mod][$ctl][$cmpt]);
+        include($init[$app][$mod][$ctl][$cmpt]);
         include("system/designer/footer.php");
     }
     else
