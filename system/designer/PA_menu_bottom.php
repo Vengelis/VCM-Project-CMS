@@ -40,6 +40,19 @@ if(!isset($exe))
         <div id="subMenu2" class="hidden absolute inset-0 py-3 px-3 sm:px-3 lg:px-4 bg-gray-600 border-l border-gray-700">
           <p class="font-mono text-base text-gray-200">Applications</p>
           <br>
+          <?php
+            $directory = 'nexus';
+            $scannedModules = array_diff(scandir($directory), array('..', '.'));
+            foreach($scannedModules as $module)
+            {
+              if($module != "core")
+              {
+                echo '<p class="text-base text-white">'.ucfirst($module).'</p>';
+                include("nexus/".$module."/admin/PA_Module_MenuList.php");
+                echo "<br>";
+              }
+            }
+          ?>
         </div>
 
         <div id="subMenu3" class="hidden absolute inset-0 py-3 px-3 sm:px-3 lg:px-4 bg-gray-600 border-l border-gray-700">
