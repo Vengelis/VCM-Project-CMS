@@ -47,7 +47,8 @@ else
 
 if(empty($GC))
 {
-    header("Location: admin/installateur/index.php");
-    exit;
+    ?><script>
+    document.location.replace("admin/installateur/index.php");
+    </script><?php
 }
 
