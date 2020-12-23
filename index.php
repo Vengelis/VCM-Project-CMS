@@ -1,6 +1,6 @@
 <?php
 $exe=true;
-if(!file_exists("global_conf.php"))
+if(!file_exists("globalConf.php"))
 {
     echo "
     <br>
@@ -12,7 +12,7 @@ if(!file_exists("global_conf.php"))
 }
 else
 {
-    require_once("global_conf.php");
+    require_once("globalConf.php");
     $GLOBALS['GC'] = $GC;
 
     require("init.php");
