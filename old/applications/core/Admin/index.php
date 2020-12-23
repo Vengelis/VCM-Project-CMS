@@ -1,0 +1,20 @@
+<?php
+require("corectl/header.php");
+
+if(!isset($_GET["app"]))
+{
+    ?><script>document.location.replace("?app=core&mod=default");</script><?php
+}
+else
+{
+    if(!isset($_GET["mod"]))
+    {
+        ?><script>document.location.replace("?app=".$_GET["app"]."&mod=default");</script><?php
+    }
+    else
+    {
+        require("appReady/".$_GET["app"]."/".$_GET["mod"].".php");
+    }
+}
+require("corectl/footer.php");
+?>

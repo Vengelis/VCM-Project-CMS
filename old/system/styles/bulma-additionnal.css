@@ -1,0 +1,41 @@
+.has-text-danger-ultralight {
+    color: #ff0000 !important;
+}
+
+a.has-text-danger-ultralight:hover, a.has-text-danger-ultralight:focus {
+color: #cc0000 !important;
+}
+
+.has-background-danger-ultralight {
+background-color: #ff0000 !important;
+}
+
+.has-background-orange {
+background-color: #ff6a00 !important;
+}
+
+
+
+/* Message Box Light Orange Border */
+
+.message.is-orange {
+background-color: #fafafa;
+}
+
+.message.is-orange .message-header {
+background-color: #0a0a0a;
+color: white;
+}
+
+.message.is-orange .message-body {
+border-color: #fc6901;
+}
+
+/* Tags orange */
+
+.tag:not(body).is-orange {
+background-color: #fc6901;
+color: #fff;
+}
+
+  
