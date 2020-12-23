@@ -15,11 +15,11 @@ if(!isset($exe))
           <br>
           <p class="text-base text-white">Vue d'ensemble</p>
           <a href="index.php?app=admin&mod=system&ctl=PA&cmpt=dashboard" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Tableau de bord</a>
-          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Mises à jours</a>
+          <a href="index.php?app=admin&mod=system&ctl=PA&cmpt=maj" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Mises à jours</a>
           <br>
           <p class="text-base text-white">Fournitures</p>
-          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Modules</a>
-          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Plugins</a>
+          <a href="index.php?app=admin&mod=system&ctl=PA&cmpt=mod_dash" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Modules</a>
+          <a href="index.php?app=admin&mod=system&ctl=PA&cmpt=pl_dash" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Plugins</a>
           <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Editeur de menu</a>
           <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">API REST</a>
           <br>
