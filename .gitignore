@@ -1,11 +1,2 @@
-### --- Configuration File --- ###
 global_conf.php
 temp_global_conf.php
-
-### --- Old Project --- ###
-
-/old
-
-### --- Test Area --- ###
-
-/test
