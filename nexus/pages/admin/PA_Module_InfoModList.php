@@ -6,8 +6,8 @@
                 Pages
             </p>
             <div class="ml-2 flex-shrink-0 flex">
-                <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                <i class="fas fa-exclamation-triangle m-1"></i>
+                <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full" style="background-color: #FCD34D; color: #92400E;">
+                <i class="fas fa-lock m-1"></i>
                 Verrouillé
                 </p>
             </div>
