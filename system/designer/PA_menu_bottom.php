@@ -7,12 +7,9 @@ if(!isset($exe))
 }
 ?>
         </div>
-        <!-- End main area -->
     </main>
     <aside class="hidden relative xl:order-first xl:flex xl:flex-col flex-shrink-0 w-56">
-        <!-- Start secondary column (hidden on smaller screens) -->
 
-        <!-- Panel Système -->
         <div id="subMenu1" class="absolute inset-0 py-3 px-3 sm:px-3 lg:px-4 bg-gray-600 border-l border-gray-700">
           <p class="font-mono text-base text-gray-200">Système</p>
           <br>
@@ -39,7 +36,6 @@ if(!isset($exe))
           <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Contact</a>
 
         </div>
-        <!-- Fin Panel Système -->
 
         <div id="subMenu2" class="hidden absolute inset-0 py-3 px-3 sm:px-3 lg:px-4 bg-gray-600 border-l border-gray-700">
           <p class="font-mono text-base text-gray-200">Applications</p>
@@ -75,20 +71,35 @@ if(!isset($exe))
         <div id="subMenu4" class="hidden absolute inset-0 py-3 px-3 sm:px-3 lg:px-4 bg-gray-600 border-l border-gray-700">
           <p class="font-mono text-base text-gray-200">Accueil</p>
           <br>
+          <p class="text-base text-white">Gestion de l'accueil</p>
+          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Modèle Index</a>
+          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Construction de l'accueil</a>
+          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Pages</a>
         </div>
 
         <div id="subMenu5" class="hidden absolute inset-0 py-3 px-3 sm:px-3 lg:px-4 bg-gray-600 border-l border-gray-700">
           <p class="font-mono text-base text-gray-200">Statistiques</p>
           <br>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-yellow-100 text-yellow-800">
+            En cours de construction
+          </span>
         </div>
 
         <div id="subMenu6" class="hidden absolute inset-0 py-3 px-3 sm:px-3 lg:px-4 bg-gray-600 border-l border-gray-700">
           <p class="font-mono text-base text-gray-200">Apparences</p>
           <br>
+          <p class="text-base text-white">Apparence</p>
+          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Thèmes</a>
+          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Pied de page</a>
+          <br>
+          <p class="text-base text-white">Editeur</p>
+          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Outils</a>
+          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Emotes</a>
+          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Paramètres</a>
+          <br>
+          <p class="text-base text-white">Pays</p>
+          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Langues</a>
         </div>
-
-
-        <!-- End secondary column -->
       </aside>
     </div>
   </div>
