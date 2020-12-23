@@ -21,6 +21,11 @@ $init = array(
                 "page_delete"   => "nexus/pages/admin/delete.php",
                 "page_params"   => "nexus/pages/admin/parameters.php"
             )
+        ),
+        "community" => array(
+            "members" => array(
+                "dashboard"     => "admin/system/PA/community/members/dashboard.php"
+            )
         )
     ),
     "system" => array(
