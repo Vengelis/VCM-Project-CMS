@@ -11,15 +11,15 @@ include("system/designer/PA_menu_top.php");
 
 <div class="bg-white overflow-hidden m-2">
   <div class="px-4 sm:p-3 flex flex-row-reverse w-full">
-    <a href="index.php?app=admin&mod=system&ctl=PA&cmpt=mod_add" class="mx-1 inline-flex items-center px-2 py-1 border border-transparent shadow-sm text-xs leading-4 font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
+    <a href="#" class="mx-1 inline-flex items-center px-2 py-1 border border-transparent shadow-sm text-xs leading-4 font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
         <i class="fas fa-file-export m-1"></i>
         exporter une liste de membre
     </a>
-    <a href="index.php?app=admin&mod=system&ctl=PA&cmpt=mod_add" class="mx-1 inline-flex items-center px-2 py-1 border border-transparent shadow-sm text-xs leading-4 font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
+    <a href="#" class="mx-1 inline-flex items-center px-2 py-1 border border-transparent shadow-sm text-xs leading-4 font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
         <i class="fas fa-file-import m-1"></i>
         importer une liste de membre
     </a>
-    <a href="index.php?app=admin&mod=system&ctl=PA&cmpt=mod_add" class="mx-1 inline-flex items-center px-2 py-1 border border-transparent shadow-sm text-xs leading-4 font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
+    <a href="index.php?app=admin&mod=community&ctl=members&cmpt=create" class="mx-1 inline-flex items-center px-2 py-1 border border-transparent shadow-sm text-xs leading-4 font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
         <i class="fas fa-plus m-1"></i>
         Créer un membre
     </a>
@@ -76,94 +76,78 @@ include("system/designer/PA_menu_top.php");
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
-            <tr>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="flex items-center">
-                  <div class="flex-shrink-0 h-10 w-10">
-                    <img class="h-10 w-10 rounded-full" src="https://cdn.discordapp.com/avatars/178151615801327616/aba7197f311298b70e78c77b8bbfd37c.png?size=4096" alt="">
-                  </div>
-                  <div class="ml-4">
-                    <div class="text-sm font-medium text-gray-900">
-                      Vengelis
-                    </div>
-                    <div class="text-sm text-gray-500">
-                     The Admin
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">vengelis@vlogis-dev.ovh</div>
-                <div class="text-sm text-green-300">Validé</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-              <div class="text-sm text-gray-700">23/12/2020</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-600 text-white">
-                  Administrateur
-                </span>
-                <div class="text-xs text-gray-500 mt-1">Group1, Group2</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                127.0.0.1
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <a class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                    <i class="fas fa-eye m-1"></i>
-                </a>
-                <a class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                    <i class="fas fa-ban m-1"></i>
-                </a>
-                <a class="inline-flex items-center px-2.5 py-1.5 shadow-sm text-xs font-medium rounded text-white bg-red-600 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-800">
-                    <i class="fas fa-flag m-1"></i>
-                </a>
-              </td>
-            </tr>
+            <?php
+                $query = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."users", array(), false);
+                while($data = $query->fetch())
+                { 
+                    ?>
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center">
+                            <div class="flex-shrink-0 h-10 w-10">
+                                <img class="h-10 w-10 rounded-full" src="https://cdn.discordapp.com/avatars/178151615801327616/aba7197f311298b70e78c77b8bbfd37c.png?size=4096" alt="">
+                            </div>
+                            <div class="ml-4">
+                                <div class="text-sm font-medium text-gray-900">
+                                <?php echo $data['username'] ; ?>
+                                </div>
+                                <div class="text-sm text-gray-500">
+                                <?php echo $data['description'] ; ?>
+                                </div>
+                            </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm text-gray-900"><?php echo $data['email'] ; ?></div>
+                            <?php
+                            if($data['validateAccount'] == 0)
+                            {
+                                echo '<div class="text-sm text-red-300">En attente d\'approbation</div>';
+                            } else {
+                                echo '<div class="text-sm text-green-300">Validé</div>';
+                            }
+                            ?>
+                            
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-700"><?php echo $data['registered'] ; ?></div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            
+                            <?php 
+                                $group = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."groups WHERE ID = ?", array($data['firstGroup']));
+                                echo $group['code'] ;
 
-            <tr>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="flex items-center">
-                  <div class="flex-shrink-0 h-10 w-10">
-                    <img class="h-10 w-10 rounded-full" src="https://cdn.discordapp.com/avatars/191495299884122112/be661ca87476ae6c9913190665db7e59.png?size=4096" alt="">
-                  </div>
-                  <div class="ml-4">
-                    <div class="text-sm font-medium text-gray-900">
-                      Romitou
-                    </div>
-                    <div class="text-sm text-gray-500">
-                     Il voulait sa pp discord
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">unknow</div>
-                <div class="text-sm text-green-300">Validé</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-              <div class="text-sm text-gray-700">23/12/2020</div>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-600 text-white">
-                  Membre
-                </span>
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                127.0.0.1
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <a class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                    <i class="fas fa-eye m-1"></i>
-                </a>
-                <a class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                    <i class="fas fa-ban m-1"></i>
-                </a>
-                <a class="inline-flex items-center px-2.5 py-1.5 shadow-sm text-xs font-medium rounded text-white bg-red-600 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-800">
-                    <i class="fas fa-flag m-1"></i>
-                </a>
-              </td>
-            </tr>
+                                $secondaryGroup = unserialize($data['otherGroups']);
+                            ?>
+                            <div class="text-xs text-gray-500 mt-1">
+                            <?php
+                                $endedGroup = end($secondaryGroup);
+                                foreach($secondaryGroup as $ogroup)
+                                {
+                                    $oogroup = executeQuery("SELECT Name FROM ".$GLOBALS['GC']['sql_tbl_prefix']."groups WHERE ID = ?", array($ogroup));
+                                    if($ogroup != $endedGroup) echo $oogroup['Name'].", " ;
+                                    else echo $oogroup['Name'];
+                                    
+                                } ?>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <?php echo $data['lastIP'] ; ?>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <a class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                                <i class="fas fa-eye m-1"></i>
+                            </a>
+                            <a class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                                <i class="fas fa-ban m-1"></i>
+                            </a>
+                            <a class="inline-flex items-center px-2.5 py-1.5 shadow-sm text-xs font-medium rounded text-white bg-red-600 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-800">
+                                <i class="fas fa-flag m-1"></i>
+                            </a>
+                        </td>
+                    </tr>
+            <?php } ?>
           </tbody>
         </table>
       </div>

@@ -24,7 +24,8 @@ $init = array(
         ),
         "community" => array(
             "members" => array(
-                "dashboard"     => "admin/system/PA/community/members/dashboard.php"
+                "dashboard"     => "admin/system/PA/community/members/dashboard.php",
+                "create"        => "admin/system/PA/community/members/create.php"
             )
         )
     ),

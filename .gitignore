@@ -1,3 +1,13 @@
+###< --- Global Config File --- >####
+
 globalConf.php
 tempGlobalConf.php
-test.php
+
+###< --- Images --- >####
+
+system/medias/images/memberProfils/
+
+###< --- Local Test --- >####
+
+test/
+
