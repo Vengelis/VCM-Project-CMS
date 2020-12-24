@@ -50,7 +50,6 @@ if(isset($_POST['sended']))
         }
     }
     $userImageProfil = "";
-    var_dump($_FILES);
     if(isset($_FILES))
     {
         

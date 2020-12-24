@@ -23,34 +23,4 @@ $('form').submit(function( e ) {
     }
 });
 
-/*function checkFile(env) {
-    //var size = <?php echo parse_size(ini_get('post_max_size')) ;?>;
-    var size = 2000;
-    var filelits = env.target.files;
-    var file = filelits[0];
-    alert(env);
-    if(file.size < size)
-    {   
-        if(get_extension(file.val()) == 'jpg' || get_extension(file.val()) == 'png' || get_extension(file.val()) == 'gif')
-        {
-            // ok
-        } 
-        else 
-        {
-            <?php
-            $alertMessage .= "<li>L'extension d'image n'est pas correcte.</li>";
-            ?>
-            document.getElementById("alertBox").className = "rounded-md bg-red-50 p-4 lg:col-span-12 m-5";
-            file.val() = "";
-        }
-    } 
-    else 
-    {
-        <?php
-        $alertMessage .= "<li>La taille de l'image est trop grande.</li>";
-        ?>
-        document.getElementById("alertBox").className = "rounded-md bg-red-50 p-4 lg:col-span-12 m-5";
-        file.val() = "";
-    }
-}*/
 </script>
