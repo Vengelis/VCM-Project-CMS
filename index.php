@@ -23,10 +23,10 @@ else
     $ctl = "index";
     $cmpt = "iv1";
 
-    if(isset($_GET['app'])) $app = $_GET['app'];
-    if(isset($_GET['mod'])) $mod = $_GET['mod'];
-    if(isset($_GET['ctl'])) $ctl = $_GET['ctl'];
-    if(isset($_GET['cmpt'])) $cmpt = $_GET['cmpt'];
+    if(isset($_GET['app'])) $app = htmlentities($_GET['app']);
+    if(isset($_GET['mod'])) $mod = htmlentities($_GET['mod']);
+    if(isset($_GET['ctl'])) $ctl = htmlentities($_GET['ctl']);
+    if(isset($_GET['cmpt'])) $cmpt = htmlentities($_GET['cmpt']);
 
     //var_dump($init[$app][$mod][$ctl][$cmpt]);
 

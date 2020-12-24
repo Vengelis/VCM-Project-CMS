@@ -74,8 +74,13 @@ if(isset($_POST['sended']))
 
     if($alertDisplay == false)
     {
+        $safeLogin = htmlentities($_POST['login']);
+        $safeUsername = htmlentities($_POST['username']);
+        $safeDescription = htmlentities($_POST['description']);
+        $safeFirstGroup = htmlentities($_POST['firstGroup']);
+        $safeEmail = htmlentities($_POST['email']);
 
-        if(createMember($_POST['login'], $_POST['username'], $_POST['description'], passHash($_POST['password']), $_SERVER['REMOTE_ADDR'], $_POST['firstGroup'], serialize($_POST['otherGroups']), $_POST['email'], $userImageProfil))
+        if(createMember($safeLogin, $safeUsername, $safeDescription, passHash($_POST['password']), $_SERVER['REMOTE_ADDR'], $safeFirstGroup, serialize($_POST['otherGroups']), $safeEmail, $userImageProfil))
         {
             $alertSuccess = true;
         }
