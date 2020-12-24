@@ -77,7 +77,7 @@ include("system/designer/PA_menu_top.php");
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
             <?php
-                $query = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."users", array(), false);
+                $query = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_users", array(), false);
                 while($data = $query->fetch())
                 { 
                     ?>
