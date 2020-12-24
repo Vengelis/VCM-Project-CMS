@@ -2,7 +2,7 @@
 if(!isset($exe))
 {
     ?><script>
-    document.location.replace("../../../../index.php?app=system&mod=errors&ctl=display&cmpt=security");
+    document.location.replace("../../index.php?app=system&mod=errors&ctl=display&cmpt=security");
     </script><?php
 }
 function parse_size($size) {
