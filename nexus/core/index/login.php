@@ -34,10 +34,7 @@ if(isset($_POST['submited']))
     }
     elseif($response == "SUCCESS:CONNECTED")
     {
-        if($_POST['remember_me'] == 1)
-        {
-            $_SESSION['WantToLiveInfinite'] = true;
-        }
+        $_SESSION['WantToLiveInfinite'] = $_POST['remember_me'];
         ?><script>
         document.location.replace("index.php");
         </script><?php

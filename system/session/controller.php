@@ -6,10 +6,9 @@ if(!isset($exe))
     </script><?php
 }
 session_start();
-
 if(isset($_SESSION['WantToLiveInfinite']))
 {
-    if($_SESSION['WantToLiveInfinite'])
+    if($_SESSION['WantToLiveInfinite'] == "on")
     {
         if(time() - $_SESSION['TTL'] > 1800)
         {
