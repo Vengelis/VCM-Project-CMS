@@ -34,7 +34,7 @@ $init = array(
             "display" => array(
                 "security"      => "system/errors/display/security.php",
                 "404"           => "system/errors/display/404.php",
-                "vp"            => "system/errors/display/violation-permission.php"
+                "vp"            => "system/errors/display/violation_permission.php"
             )
         )
     ),
