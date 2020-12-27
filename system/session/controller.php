@@ -7,7 +7,7 @@ if(!isset($exe))
 }
 session_start();
 
-if(isset($_SESSION['WantToLiveInfinite'])
+if(isset($_SESSION['WantToLiveInfinite']))
 {
     if($_SESSION['WantToLiveInfinite'])
     {
