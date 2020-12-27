@@ -34,6 +34,10 @@ if(isset($_POST['submited']))
     }
     elseif($response == "SUCCESS:CONNECTED")
     {
+        if($_POST['remember_me'] == 1)
+        {
+            $_SESSION['WantToLiveInfinite'] = true;
+        }
         ?><script>
         document.location.replace("index.php");
         </script><?php
@@ -125,7 +129,7 @@ if(isset($_POST['submited']))
           </div>
           <div class="relative flex justify-center text-sm">
             <span class="px-2 bg-white text-gray-500">
-              Ou se conencter avec
+              Ou se connecter avec
             </span>
           </div>
         </div>

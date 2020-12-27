@@ -6,7 +6,32 @@ if(!isset($exe))
     </script><?php
 }
 session_start();
-session_regenerate_id(true);
+
+if(isset($_SESSION['WantToLiveInfinite'])
+{
+    if($_SESSION['WantToLiveInfinite'])
+    {
+        if(time() - $_SESSION['TTL'] > 1800)
+        {
+            session_regenerate_id(true);
+        }
+        $_SESSION['TTL'] = time();
+    }
+    else
+    {
+        if(time() - $_SESSION['TTL'] > 43200)
+        {
+            session_destroy();
+        }
+        else
+        {
+            $_SESSION['TTL'] = time();
+            session_regenerate_id(true);
+        }
+    }
+}
+
+
 
 
 ?>
