@@ -18,7 +18,7 @@ if(!isset($exe))
   }
 }
 </script>
-<div class="h-full flex overflow-hidden bg-white">
+<div class="min-h-full flex overflow-hidden bg-white">
   <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
   <div id="navAdmin" class="hidden">
     <div class="fixed inset-0 flex z-40">
@@ -145,7 +145,6 @@ if(!isset($exe))
     </div>
     <div class="flex-1 relative z-0 flex overflow-hidden">
     <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last" tabindex="0">
-        <!-- Start main area-->
         <div class="absolute inset-0">
           
         

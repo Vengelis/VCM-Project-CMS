@@ -21,6 +21,12 @@ $init = array(
                 "page_delete"   => "nexus/pages/admin/delete.php",
                 "page_params"   => "nexus/pages/admin/parameters.php"
             )
+        ),
+        "community" => array(
+            "members" => array(
+                "dashboard"     => "admin/system/PA/community/members/dashboard.php",
+                "create"        => "admin/system/PA/community/members/create.php"
+            )
         )
     ),
     "system" => array(
@@ -28,14 +34,16 @@ $init = array(
             "display" => array(
                 "security"      => "system/errors/display/security.php",
                 "404"           => "system/errors/display/404.php",
-                "vp"            => "system/errors/display/violation-permission.php"
+                "vp"            => "system/errors/display/violation_permission.php"
             )
         )
     ),
     "nexus" => array(
         "core" => array(
             "index" => array(
-                "iv1"           => "nexus/core/index/nexus_index_t1.php"
+                "iv1"           => "nexus/core/index/nexus_index_t1.php",
+                "login"         => "nexus/core/index/login.php",
+                "disconnect"    => "system/actions/forms/disconnect.php"
             )
         )
     )

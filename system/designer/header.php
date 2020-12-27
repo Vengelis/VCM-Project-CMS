@@ -5,10 +5,7 @@ if(!isset($exe))
     document.location.replace("../../index.php?app=system&mod=errors&ctl=display&cmpt=security");
     </script><?php
 }
-if(!isset($_SESSION['isLogged']))
-{
-    createVisitor();
-}
+verifySession();
 ?>
 <script>
 function changeNavBar() {
@@ -100,7 +97,13 @@ function notifDropdown() {
           <div>
             <button onclick="displayProfilDropdown()" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-haspopup="true">
               <span class="sr-only">Menu utilisateur</span>
-              <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+              <?php 
+                if(empty($_SESSION["imageProfil"]))
+                {
+                    $_SESSION["imageProfil"] = "default.png";
+                }
+              ?>
+              <img class="h-8 w-8 rounded-full" src="system/medias/images/memberProfils/<?php echo $_SESSION['imageProfil'] ; ?>" alt="">
             </button>
           </div>
 
@@ -112,36 +115,36 @@ function notifDropdown() {
             <?php
                 if(in_array('*',$_SESSION['allPermissions']) || in_array('PA_ACCESS',$_SESSION['allPermissions']) || in_array('PM_ACCESS',$_SESSION['allPermissions']))
                 {
-            ?>
-            <div class="py-1">
-                <?php
-                if(in_array('*',$_SESSION['allPermissions']) || in_array('PM_ACCESS',$_SESSION['allPermissions']))
-                {
-                ?>
-                <a href="#" class="group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">
-                    <svg class="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve"><g id="Black"><g><polygon fill="none" stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="6.48,12.52 6,15.5 4.02,15.98 0.5,19.5 0.5,23.5 4.5,23.5 8.02,19.98 8.5,18 11.48,17.52 "/><line fill="none" stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="8.98" y1="15.02" x2="18" y2="6"/><polygon fill="none" stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="18,6 22,5 23.5,2 22,0.5 19,2 "/><polyline fill="none" stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="11.5,9.5 8,6 7.5,2.5 5.5,0.5 2.5,0.5 4.5,2.5 4.5,4.5 2.5,4.5 0.5,2.5 0.5,5.5 2,7.5 6,8 9.5,11.5"/><polyline fill="none" stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="14.5,12.5 18,16 21.5,16.5 23.5,18.5 23.5,21.5 21.5,19.5 19.5,19.5 19.5,21.5 21.5,23.5 18.5,23.5 16.5,22 16,18 12.5,14.5"/><line fill="none" stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="6" y1="15.5" x2="8.5" y2="18"/></g></g><g id="Frames-24px"><rect fill="none" width="24" height="24"/></g>
-                    </svg>
-                    Panel Modération
-                </a>
-                <?php
-                }
-                if(in_array('*',$_SESSION['allPermissions']) || in_array('PA_ACCESS',$_SESSION['allPermissions']))
-                {
                     ?>
-                <a href="index.php?app=admin&mod=system&ctl=PA&cmpt=dashboard" class="group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">
-                    <svg class="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve"><g id="Layer_1"><path d="M1,14h3v2H1v14h3v2H1v14h3v4h42v-4h3V32h-3v-2h3V16h-3v-2h3V0H1V14z M44,48H6v-2h38V48z M47,34v10h-1H4H3V34h1h42H47z M44,32H6v-2h38V32z M47,18v10h-1H4H3V18h1h42H47z M44,16H6v-2h38V16z M3,2h44v10h-1H4H3V2z"/><rect x="6" y="5" width="2" height="4"/><rect x="11" y="5" width="2" height="4"/><rect x="16" y="5" width="2" height="4"/><rect x="21" y="5" width="2" height="4"/><rect x="42" y="6" width="2" height="2"/><rect x="26" y="6" width="13" height="2"/><rect x="6" y="21" width="2" height="4"/><rect x="11" y="21" width="2" height="4"/><rect x="16" y="21" width="2" height="4"/><rect x="21" y="21" width="2" height="4"/><rect x="42" y="22" width="2" height="2"/><rect x="26" y="22" width="13" height="2"/><rect x="6" y="37" width="2" height="4"/><rect x="11" y="37" width="2" height="4"/><rect x="16" y="37" width="2" height="4"/><rect x="21" y="37" width="2" height="4"/><rect x="42" y="38" width="2" height="2"/><rect x="26" y="38" width="13" height="2"/></g><g></g>
-                    </svg>
-                    Panel Administration
-                </a>
-                <?php
-                }
-                ?>
-            </div>
-            <?php
+                    <div class="py-1">
+                        <?php
+                        if(in_array('*',$_SESSION['allPermissions']) || in_array('PM_ACCESS',$_SESSION['allPermissions']))
+                        {
+                        ?>
+                        <a href="#" class="group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">
+                            <svg class="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve"><g id="Black"><g><polygon fill="none" stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="6.48,12.52 6,15.5 4.02,15.98 0.5,19.5 0.5,23.5 4.5,23.5 8.02,19.98 8.5,18 11.48,17.52 "/><line fill="none" stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="8.98" y1="15.02" x2="18" y2="6"/><polygon fill="none" stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="18,6 22,5 23.5,2 22,0.5 19,2 "/><polyline fill="none" stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="11.5,9.5 8,6 7.5,2.5 5.5,0.5 2.5,0.5 4.5,2.5 4.5,4.5 2.5,4.5 0.5,2.5 0.5,5.5 2,7.5 6,8 9.5,11.5"/><polyline fill="none" stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="14.5,12.5 18,16 21.5,16.5 23.5,18.5 23.5,21.5 21.5,19.5 19.5,19.5 19.5,21.5 21.5,23.5 18.5,23.5 16.5,22 16,18 12.5,14.5"/><line fill="none" stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="6" y1="15.5" x2="8.5" y2="18"/></g></g><g id="Frames-24px"><rect fill="none" width="24" height="24"/></g>
+                            </svg>
+                            Panel Modération
+                        </a>
+                        <?php
+                        }
+                        if(in_array('*',$_SESSION['allPermissions']) || in_array('PA_ACCESS',$_SESSION['allPermissions']))
+                        {
+                            ?>
+                        <a href="index.php?app=admin&mod=system&ctl=PA&cmpt=dashboard" class="group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">
+                            <svg class="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve"><g id="Layer_1"><path d="M1,14h3v2H1v14h3v2H1v14h3v4h42v-4h3V32h-3v-2h3V16h-3v-2h3V0H1V14z M44,48H6v-2h38V48z M47,34v10h-1H4H3V34h1h42H47z M44,32H6v-2h38V32z M47,18v10h-1H4H3V18h1h42H47z M44,16H6v-2h38V16z M3,2h44v10h-1H4H3V2z"/><rect x="6" y="5" width="2" height="4"/><rect x="11" y="5" width="2" height="4"/><rect x="16" y="5" width="2" height="4"/><rect x="21" y="5" width="2" height="4"/><rect x="42" y="6" width="2" height="2"/><rect x="26" y="6" width="13" height="2"/><rect x="6" y="21" width="2" height="4"/><rect x="11" y="21" width="2" height="4"/><rect x="16" y="21" width="2" height="4"/><rect x="21" y="21" width="2" height="4"/><rect x="42" y="22" width="2" height="2"/><rect x="26" y="22" width="13" height="2"/><rect x="6" y="37" width="2" height="4"/><rect x="11" y="37" width="2" height="4"/><rect x="16" y="37" width="2" height="4"/><rect x="21" y="37" width="2" height="4"/><rect x="42" y="38" width="2" height="2"/><rect x="26" y="38" width="13" height="2"/></g><g></g>
+                            </svg>
+                            Panel Administration
+                        </a>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <?php
                 }
             ?>
             <div class="py-1">
-                <a href="#" class="block px-4 py-2 text-sm text-red-500 hover:bg-gray-100" role="menuitem"><strong>Déconnexion</strong></a>
+                <a href="index.php?app=nexus&mod=core&ctl=index&cmpt=disconnect" class="block px-4 py-2 text-sm text-red-500 hover:bg-gray-100" role="menuitem"><strong>Déconnexion</strong></a>
             </div>
           </div>
           <?php 
@@ -157,9 +160,9 @@ function notifDropdown() {
                         </svg>
                     </button>
                 </div>
-                <div id="profilDropdown" class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-200" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+                <div id="profilDropdown" class="hidden absolute right-0 mt-2 bg-white rounded-md shadow-lg overflow-hidden z-20 w-56 divide-y divide-gray-200">
                     <div class="py-1">  
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Connexion</a>
+                        <a href="index.php?app=nexus&mod=core&ctl=index&cmpt=login" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Connexion</a>
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Inscription</a>
                     </div>
                 </div>
