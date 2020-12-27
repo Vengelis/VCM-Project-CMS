@@ -41,7 +41,9 @@ $init = array(
     "nexus" => array(
         "core" => array(
             "index" => array(
-                "iv1"           => "nexus/core/index/nexus_index_t1.php"
+                "iv1"           => "nexus/core/index/nexus_index_t1.php",
+                "login"         => "nexus/core/index/login.php",
+                "disconnect"    => "system/actions/forms/disconnect.php"
             )
         )
     )

