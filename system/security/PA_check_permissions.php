@@ -9,7 +9,7 @@ function loggedUserAsPermission($perm)
 {
     if(in_array('*',$_SESSION['allPermissions']) || in_array($perm,$_SESSION['allPermissions']))
     {
-        return true;
+        return true; 
     }
     else
     {

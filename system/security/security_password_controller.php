@@ -19,5 +19,5 @@ function passHash($pass)
 
 function verifyPass($verifPass, $original)
 {
-    return password_verify($verifyPass, $hash);
+    return password_verify($verifPass, $original);
 }

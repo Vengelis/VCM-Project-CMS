@@ -1,6 +1,7 @@
 <?php
-// - Handler session
+// - Handler session & cookies
 require('system/session/controller.php');
+require('system/cookies/controller.php');
 
 // - Handler db
 require('system/db/db_controller.php');
