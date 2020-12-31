@@ -7,6 +7,9 @@ include('system/mailer/Exception.php');
 include('system/mailer/PHPMailer.php');
 include('system/mailer/SMTP.php');
 
+include("system/mailer/mail_template_send_token.php");
+include("system/mailer/mail_template_send_valid.php");
+
 if(!isset($exe))
 {
     ?><script>
