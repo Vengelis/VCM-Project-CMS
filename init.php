@@ -26,6 +26,9 @@ $init = array(
             "members" => array(
                 "dashboard"     => "admin/system/PA/community/members/dashboard.php",
                 "create"        => "admin/system/PA/community/members/create.php"
+            ),
+            "moderation" => array(
+                "spam_prevent"  => "admin/system/PA/community/moderation/spamPrevention.php"
             )
         )
     ),
@@ -34,7 +37,8 @@ $init = array(
             "display" => array(
                 "security"      => "system/errors/display/security.php",
                 "404"           => "system/errors/display/404.php",
-                "vp"            => "system/errors/display/violation_permission.php"
+                "vp"            => "system/errors/display/violation_permission.php",
+                "rv"            => "system/errors/display/robot_verification.php"
             )
         )
     ),
@@ -43,6 +47,8 @@ $init = array(
             "index" => array(
                 "iv1"           => "nexus/core/index/nexus_index_t1.php",
                 "login"         => "nexus/core/index/login.php",
+                "register"      => "nexus/core/index/register.php",
+                "va"            => "nexus/core/index/validate_account.php",
                 "disconnect"    => "system/actions/forms/disconnect.php"
             )
         )
