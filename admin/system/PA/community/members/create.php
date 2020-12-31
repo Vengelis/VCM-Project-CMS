@@ -80,7 +80,7 @@ if(isset($_POST['sended']))
         $safeFirstGroup = htmlentities($_POST['firstGroup']);
         $safeEmail = htmlentities($_POST['email']);
 
-        if(createMember($safeLogin, $safeUsername, $safeDescription, passHash($_POST['password']), $_SERVER['REMOTE_ADDR'], $safeFirstGroup, serialize($_POST['otherGroups']), $safeEmail, $userImageProfil))
+        if(createMember($safeLogin, $safeUsername, $safeDescription, passHash($_POST['password']), $_SERVER['REMOTE_ADDR'], $safeFirstGroup, serialize($_POST['otherGroups']), $safeEmail, $userImageProfil, 1))
         {
             $alertSuccess = true;
         }

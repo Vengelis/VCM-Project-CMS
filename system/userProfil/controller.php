@@ -1,4 +1,10 @@
 <?php
+if(!isset($exe))
+{
+    ?><script>
+    document.location.replace("../../../index.php?app=system&mod=errors&ctl=display&cmpt=security");
+    </script><?php
+}
 function createVisitor()
 {
     $query = executeQuery("SELECT lastUpdate FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_users WHERE login = ?", array("VisitorSystemUser"));

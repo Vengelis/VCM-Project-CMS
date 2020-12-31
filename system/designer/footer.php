@@ -7,7 +7,7 @@ if(!isset($exe))
 }
 ?>
 <!--<div class="h-3/4"></div>-->
-<footer class="bg-gray-50 overflow-hidden shadow rounded-lg">
+<footer class="bg-gray-50 overflow-hidden shadow rounded-lg mt-3">
     <div class="px-8 py-12 grid justify-items-center text-center">
         <div>
             <p class="text-base">Made with <a href="https://tailwindui.com" target="_blank" class="text-orange-500">tailwindcss</a> by <a href="https://github.com/Vengelis" target="_blank" class="text-orange-500">Vengelis</a></p>

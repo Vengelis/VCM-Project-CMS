@@ -70,7 +70,7 @@ if(isset($_POST['submited']))
     </h2>
     <p class="mt-2 text-center text-sm text-gray-600 max-w">
       Ou
-      <a href="#" class="font-medium text-orange-600 hover:text-orange-500">
+      <a href="index.php?app=nexus&mod=core&ctl=index&cmpt=register" class="font-medium text-orange-600 hover:text-orange-500">
         s'enregistrer
       </a>
     </p>
