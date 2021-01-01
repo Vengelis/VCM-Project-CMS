@@ -24,12 +24,12 @@ if(!isset($exe))
           <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">API REST</a>
           <br>
           <p class="text-base text-white">Paramètres</p>
-          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Configuration générale</a>
-          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Politiques</a>
-          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Paramètres Email</a>
-          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Connexion et enregistrement</a>
-          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Double authentification</a>
-          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Configuration avancée</a>
+          <a href="index.php?app=admin&mod=system&ctl=PA&cmpt=sets_global" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Configuration générale</a>
+          <a href="index.php?app=admin&mod=system&ctl=PA&cmpt=sets_policy" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Politiques</a>
+          <a href="index.php?app=admin&mod=system&ctl=PA&cmpt=sets_mails" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Paramètres Email</a>
+          <a href="index.php?app=admin&mod=system&ctl=PA&cmpt=sets_lo_re" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Connexion et enregistrement</a>
+          <a href="index.php?app=admin&mod=system&ctl=PA&cmpt=sets_2FA" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Double authentification</a>
+          <a href="index.php?app=admin&mod=system&ctl=PA&cmpt=sets_adv" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Configuration avancée</a>
           <br>
           <p class="text-base text-white">Support</p>
           <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">FAQ</a>
