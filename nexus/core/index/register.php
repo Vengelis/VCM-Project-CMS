@@ -241,7 +241,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 </div>
 <?php 
 $pK = executeQuery("SELECT value FROM ".$GLOBALS['GC']['sql_tbl_prefix']."system_config_global WHERE paramKey = 'spamPrevent_captcha_public_key'", array());
-if($captchatEnabled == "on"){ ?>
+if($captchatEnabled == "invisible"){ ?>
 <script src="https://www.google.com/recaptcha/api.js?render=<?php echo $pK['value'] ; ?>"></script>
 <script>
 grecaptcha.ready(function() {

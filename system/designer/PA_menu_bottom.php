@@ -71,7 +71,7 @@ if(!isset($exe))
           <br>
           <p class="text-base text-white">Modération</p>
           <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Modération automatique</a>
-          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Présvention de spam</a>
+          <a href="index.php?app=admin&mod=community&ctl=moderation&cmpt=spam_prevent" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Prévention de spam</a>
           <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Avertissement</a>
           <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Paramètres de banissement</a>
           <br>

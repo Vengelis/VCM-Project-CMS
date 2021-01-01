@@ -19,7 +19,14 @@ $init = array(
                 "page_create"   => "nexus/pages/admin/create.php",
                 "page_modify"   => "nexus/pages/admin/modify.php",
                 "page_delete"   => "nexus/pages/admin/delete.php",
-                "page_params"   => "nexus/pages/admin/parameters.php"
+                "page_params"   => "nexus/pages/admin/parameters.php",
+
+                "sets_global"   => "admin/system/PA/system/settings/globals_settings.php",
+                "sets_policy"   => "admin/system/PA/system/settings/policy.php",
+                "sets_mails"    => "admin/system/PA/system/settings/emails",
+                "sets_lo_re"    => "admin/system/PA/system/settings/login_register.php",
+                "sets_2FA"      => "admin/system/PA/system/settings/2FA.php",
+                "sets_adv"      => "admin/system/PA/system/settings/advanced_settings.php"
             )
         ),
         "community" => array(
