@@ -23,7 +23,7 @@ $init = array(
 
                 "sets_global"   => "admin/system/PA/system/settings/globals_settings.php",
                 "sets_policy"   => "admin/system/PA/system/settings/policy.php",
-                "sets_mails"    => "admin/system/PA/system/settings/emails",
+                "sets_mails"    => "admin/system/PA/system/settings/emails.php",
                 "sets_lo_re"    => "admin/system/PA/system/settings/login_register.php",
                 "sets_2FA"      => "admin/system/PA/system/settings/2FA.php",
                 "sets_adv"      => "admin/system/PA/system/settings/advanced_settings.php"
