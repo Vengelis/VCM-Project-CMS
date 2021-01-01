@@ -26,7 +26,7 @@ function registerCreateVerifyToken($user, $email)
 {
     
 
-    $token = keyGenerator();
+    $token = verifCode();
     $insert = executeQuery("INSERT INTO ".$GLOBALS['GC']['sql_tbl_prefix']."system_pending_registration VALUES (NULL,?,?)", array($email, $token));
     $title = "VCM Project CMS - Validation inscription";
     $body = getEmailFormatToken($token);
@@ -40,7 +40,14 @@ function registerCreateVerifyToken($user, $email)
     }
 
 }
-
+function verifCode(){
+    $key = '';
+    $str = strtoupper(substr(md5(uniqid(rand(), true)), 0, 8));
+    for ($i=0; $i < 7; $i++) {
+       $key .= $str[$i];
+    }
+    return $key;
+ }
 function keyGenerator($separator = ""){
     $key = '';
     $str = strtoupper(substr(md5(uniqid(rand(), true)), 0, 25));
