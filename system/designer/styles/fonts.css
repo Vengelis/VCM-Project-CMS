@@ -1,0 +1,102 @@
+/* --- Helvetica font --- */
+
+@font-face {
+    font-family: "Helvetica";
+    font-style: normal;
+    font-weight: normal;
+	src: url('fonts/helvetica/Helvetica.ttf');
+}
+@font-face {
+	font-family: "Helvetica";
+	font-style: italic;
+	src: url('fonts/helvetica/Helvetica-Oblique.ttf');
+}
+@font-face {
+	font-family: "Helvetica";
+	font-weight: bold;
+	src: url('fonts/helvetica/Helvetica-Bold.ttf');
+}
+@font-face {
+    font-family: "Helvetica";
+    font-style: italic;
+	font-weight: bold;
+	src: url('fonts/helvetica/Helvetica-BoldOblique.ttf');
+}
+
+.font-helvetica {
+    font-family: "Helvetica", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+}
+
+/* --- Quattrocento Sans font --- */
+
+@font-face {
+    font-family: "QuattroCento Sans";
+	src: url('fonts/quattrocentosans/QuattrocentoSans-Regular.ttf');
+}
+@font-face {
+    font-family: "QuattroCento Sans";
+    font-weight: bold;
+	src: url('fonts/quattrocentosans/QuattrocentoSans-Bold.ttf');
+}
+@font-face {
+    font-family: "QuattroCento Sans";
+    font-style: italic;
+	src: url('fonts/quattrocentosans/QuattrocentoSans-Italic.ttf');
+}
+@font-face {
+    font-family: "QuattroCento Sans";
+    font-style: italic;
+    font-weight: bold;
+	src: url('fonts/quattrocentosans/QuattrocentoSans-BoldItalic.ttf');
+}
+
+.font-quattrocento {
+    font-family: "QuattroCento Sans", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+}
+
+/* --- Questrial font --- */
+
+@font-face {
+    font-family: "Questrial";
+	src: url('fonts/questrial/Questrial-Regular.ttf');
+}
+
+.font-questrial {
+    font-family: "Questrial", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+}
+
+/* --- Nunito font --- */
+
+@font-face {
+    font-family: "Nunito";
+    src: url('fonts/nunito/Nunito-Regular.ttf');
+}
+@font-face {
+    font-family: "Nunito";
+    src: url('fonts/nunito/Nunito-Bold.ttf');
+    font-style: normal;
+    font-weight: bold;
+}
+@font-face {
+    font-family: "Nunito";
+    src: url('fonts/nunito/Nunito-Italic.ttf');
+    font-style: italic;
+    font-weight: normal;
+}
+@font-face {
+    font-family: "Nunito";
+    src: url('fonts/nunito/Nunito-BoldItalic.ttf');
+    font-style: italic;
+    font-weight: bold;
+}
+.font-nunito {
+    font-family: "Nunito";
+    font-style: normal;
+    font-weight: normal;
+}
