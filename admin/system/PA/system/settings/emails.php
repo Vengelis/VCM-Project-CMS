@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     </div>
 </div>
 
-<div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
+<div class="mt-3 bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
   <div class="md:grid md:grid-cols-6 md:gap-6">
     <div class="md:col-span-2">
       <h3 class="text-lg font-medium leading-6 text-gray-900">Paramètres d'affichage des mails</h3>

@@ -6,6 +6,7 @@ if(!isset($exe))
     </script><?php
 }
 verifySession();
+compareSession();
 ?>
 <script>
 function changeNavBar() {

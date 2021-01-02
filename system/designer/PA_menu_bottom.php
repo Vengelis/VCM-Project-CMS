@@ -60,7 +60,7 @@ if(!isset($exe))
           <br>
           <p class="text-base text-white">Membres</p>
           <a href="index.php?app=admin&mod=community&ctl=members&cmpt=dashboard" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Membres</a>
-          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Groupes</a>
+          <a href="index.php?app=admin&mod=community&ctl=groups&cmpt=dashboard" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Groupes</a>
           <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Outils d'adresse IP</a>
           <br>
           <p class="text-base text-white">Paramètres des membres</p>
