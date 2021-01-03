@@ -64,13 +64,25 @@ if(isset($_POST['sended']))
             $pdpRndString = "IPM-".$_POST['username'].generateRandomString()."-";
             $userImageProfil = $pdpRndString.$_FILES['user_photo']["name"];
             move_uploaded_file($_FILES['user_photo']["tmp_name"], "system/medias/images/memberProfils/".$pdpRndString.$_FILES['user_photo']["name"]);
+            if (!file_exists("system/medias/images/memberProfils/".$pdpRndString.$_FILES['user_photo']["name"])) 
+            {
+                $userImageProfil = "default.png";
+            }
         }
     }
     else
     {
-        $userImageProfil = "";
+        $userImageProfil = "default.png";
     }
     
+    if(!isset($_POST['otherGroups']))
+    {
+        $og = serialize(array());
+    }
+    else
+    {
+        $og = serialize($_POST['otherGroups']);
+    }
 
     if($alertDisplay == false)
     {
@@ -80,7 +92,7 @@ if(isset($_POST['sended']))
         $safeFirstGroup = htmlentities($_POST['firstGroup']);
         $safeEmail = htmlentities($_POST['email']);
 
-        if(createMember($safeLogin, $safeUsername, $safeDescription, passHash($_POST['password']), $_SERVER['REMOTE_ADDR'], $safeFirstGroup, serialize($_POST['otherGroups']), $safeEmail, $userImageProfil, 1))
+        if(createMember($safeLogin, $safeUsername, $safeDescription, passHash($_POST['password']), $_SERVER['REMOTE_ADDR'], $safeFirstGroup, $og, $safeEmail, $userImageProfil, 1))
         {
             $alertSuccess = true;
         }
@@ -276,7 +288,7 @@ else
                         <div class="mt-1 lg:hidden">
                             <div class="flex items-center">
                                 <div class="flex-shrink-0 inline-block rounded-full overflow-hidden h-12 w-12" aria-hidden="true">
-                                <img class="rounded-full h-full w-full" src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=80h" alt="">
+                                <img class="rounded-full h-full w-full" src="system/medias/images/memberProfils/default.png" alt="">
                                 </div>
                                 <div class="ml-5 rounded-md shadow-sm">
                                 <div class="group relative border border-gray-300 rounded-md py-2 px-3 flex items-center justify-center hover:bg-gray-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-light-blue-500">
@@ -291,7 +303,7 @@ else
                         </div>
 
                         <div class="hidden relative rounded-sm overflow-hidden lg:block">
-                            <img class="relative rounded-sm w-40 h-40" src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=320&h=320&q=80" alt="">
+                            <img class="relative rounded-sm w-40 h-40" src="system/medias/images/memberProfils/default.png" alt="">
                             <label for="user_photo" class="absolute inset-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center text-sm font-medium text-white opacity-0 hover:opacity-100 focus-within:opacity-100">
                                 <span>Changer</span>
                                 <span class="sr-only"> Photo d'utilisateur</span>
@@ -321,23 +333,37 @@ else
                             <label for="cpassword" class="block text-sm font-medium text-gray-700">Confirmer le mot de passe<a class="text-red-800">*</a></label>
                             <input type="password" name="cpassword" id="cpassword" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm">
                         </div>
-
+                        
                         <div class="col-span-12 sm:col-span-6">
                             <label class="block">
                                 <span class="text-gray-700">Groupe principal<a class="text-red-800">*</a></span>
                                 <select name="firstGroup" class="form-select block w-full mt-1">
-                                    <option value="1">Groupe1</option>
-                                    <option value="2">Groupe2</option>
+                                <?php
+                                    $query = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups", array(), false);
+                                    while($data = $query->fetch())
+                                    { 
+                                        ?>
+                                        <option value="<?php echo $data['ID']; ?>"><?php echo $data['Name']; ?></option>
+                                        <?php
+                                    }
+                                    ?>
                                 </select>
                             </label>
                         </div>
-
+                        
                         <div class="col-span-12 sm:col-span-6">
                             <label class="block">
                                 <span class="text-gray-700">Groupes secondaires</span>
                                 <select name="otherGroups[]" id="otherGroups[]" class="form-multiselect block w-full mt-1" multiple="multiple">
-                                    <option value="1" selected>Groupe1</option>
-                                    <option value="2" selected>Groupe2</option>
+                                <?php
+                                    $query = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups", array(), false);
+                                    while($data = $query->fetch())
+                                    { 
+                                        ?>
+                                        <option value="<?php echo $data['ID']; ?>"><?php echo $data['Name']; ?></option>
+                                        <?php
+                                        }
+                                    ?>
                                 </select>
                             </label>
                         </div>

@@ -23,5 +23,4 @@ function compareSession()
     {
         reconnectUser();
     }
-    echo "Server value: ".$serverValue." - Session value: ".$_SESSION['allLastUpdateGroup'];
 }

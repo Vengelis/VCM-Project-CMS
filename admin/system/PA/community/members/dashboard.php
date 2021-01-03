@@ -23,6 +23,10 @@ include("system/designer/PA_menu_top.php");
         <i class="fas fa-plus m-1"></i>
         Créer un membre
     </a>
+    <a href="#" class="mx-1 inline-flex items-center px-2 py-1 border border-transparent shadow-sm text-xs leading-4 font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+        <i class="fas fa-backspace m-1"></i>
+       Purger un ancien compte
+    </a>
   </div>
 </div>
 
@@ -85,7 +89,7 @@ include("system/designer/PA_menu_top.php");
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
                             <div class="flex-shrink-0 h-10 w-10">
-                                <img class="h-10 w-10 rounded-full" src="https://cdn.discordapp.com/avatars/178151615801327616/aba7197f311298b70e78c77b8bbfd37c.png?size=4096" alt="">
+                                <img class="h-10 w-10 rounded-full" src="system/medias/images/memberProfils/<?php echo $data['imageProfil'] ; ?>" alt="error">
                             </div>
                             <div class="ml-4">
                                 <div class="text-sm font-medium text-gray-900">

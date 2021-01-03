@@ -5,7 +5,7 @@ include("system/designer/PA_menu_top.php");
 if(!isset($_GET['gid']))
 {
     ?><script>
-    document.location.replace("index.php?app=system&mod=errors&ctl=display&cmpt=404");
+    document.location.replace("index.php?app=system&mod=errors&ctl=display&cmpt=ae");
     </script><?php
 }
 else
@@ -15,6 +15,10 @@ else
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
+    if(isset($_POST['pa_visuels']))
+    {
+        
+    }
     if(isset($_POST['pa_perms']))
     {
         executeQuery("DELETE FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups_perms_links WHERE groupKey = ?", array($gid));
