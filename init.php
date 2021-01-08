@@ -45,6 +45,11 @@ $init = array(
                 "login"         => "nexus/core/index/login.php",
                 "disconnect"    => "system/actions/forms/disconnect.php"
             )
+        ),
+        "forum" => array(
+            "index" => array(
+                "acceuil"       => "nexus/forum/index/accueil.php"
+            )
         )
     )
 );
