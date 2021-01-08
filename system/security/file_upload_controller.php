@@ -15,16 +15,12 @@ function parse_size($size) {
       return round($size);
     }
   }
-function verifUploadedFileSize($controller)
+function verifUploadedFileSize($size)
 {
-    if(isset($_FILES[$controller])) {
-        if($_FILES[$controller]['size'] > parse_size(ini_get('post_max_size'))) { 
-            return false;
-        } else {
-           return true;
-        }
-    } else {
+    if($size > parse_size(ini_get('post_max_size'))) { 
         return false;
+    } else {
+        return true;
     }
 }
 

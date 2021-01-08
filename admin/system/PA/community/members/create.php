@@ -52,8 +52,7 @@ if(isset($_POST['sended']))
     $userImageProfil = "";
     if(isset($_FILES))
     {
-        
-        if(!verifUploadedFileSize('user_photo'))
+        if(!verifUploadedFileSize($_FILES['user_photo']["size"]))
         {
             $userImageProfil = "";
             $alertDisplay = true;
