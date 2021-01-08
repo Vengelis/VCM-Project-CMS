@@ -49,7 +49,8 @@ $init = array(
         "blog" => array(
             "index" => array(
                 "index"         => "nexus/blog/index/index.php",
-                "view"          => "nexus/blog/index/view.php"
+                "view"          => "nexus/blog/index/view.php",
+                "edit"          => "nexus/blog/index/edit.php"
             )
         )
     )
