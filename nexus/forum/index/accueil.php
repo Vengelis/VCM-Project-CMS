@@ -15,7 +15,7 @@ if(!isset($exe))
   <ol class="max-w-screen-xl w-full px-4 flex space-x-4 sm:px-6 lg:px-8">
     <li class="flex">
       <div class="flex items-center">
-        <a href="#" class="text-gray-400 hover:text-gray-500">
+        <a href="http://cms/VCM-Project-CMS/index.php" class="text-gray-400 hover:text-gray-500">
          
           <svg class="flex-shrink-0 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
@@ -48,41 +48,41 @@ if(!isset($exe))
             <div class="bg-gray-200 divide-y divide-gray-200">
                 <div class="grid grid-cols-12">
                     <div class="p-5 bg-white overflow-hidden col-span-1">
-                        <p class="text-base"><i class="text-orange-500 fas fa-bell"></i></p>
+                        <p class="p-4 text-base"><i class="text-orange-500 fas fa-bell"></i></p>
                     </div>
                     <div class="p-5 bg-white overflow-hidden col-span-5">
                         <p class="text-base">texte</p>
                         <p class="text-xs">test texte</p>
                     </div>
                     <div class="p-5 bg-white overflow-hidden col-span-6">
-                        <p class="text-base">Derniere annonce</p>
+                        <p class="mt-4 text-base">Derniere annonce</p>
                     </div>
                 </div>
             </div>
 
             <div class="grid grid-cols-12">
                     <div class="p-5 bg-white overflow-hidden col-span-1">
-                        <p class="text-base"><i class="text-orange-500 fas fa-bell"></i></p>
+                        <p class="p-4 text-base"><i class="text-orange-500 fas fa-bell"></i></p>
                     </div>
                     <div class="p-5 bg-white overflow-hidden col-span-5">
                         <p class="text-base">texte</p>
                         <p class="text-xs">test texte</p>
                     </div>
                     <div class="p-5 bg-white overflow-hidden col-span-6">
-                        <p class="text-base">Derniere annonce</p>
+                        <p class="mt-4 text-base">Derniere annonce</p>
                     </div>
                 </div>
 
             <div class="grid grid-cols-12">
                 <div class="p-5 bg-white overflow-hidden col-span-1">
-                    <p class="text-base"><i class="text-orange-500 fas fa-bell"></i></p>
+                    <p class="p-4 text-base"><i class="text-orange-500 fas fa-bell"></i></p>
                 </div>
                 <div class="p-5 bg-white overflow-hidden col-span-5">
                     <p class="text-base">texte</p>
                     <p class="text-xs">test texte</p>
                 </div>
                 <div class="p-5 bg-white overflow-hidden col-span-6">
-                    <p class="text-base">Derniere annonce</p>
+                    <p class="mt-4 text-base">Derniere annonce</p>
                 </div>
             </div>
         </div>
@@ -98,47 +98,82 @@ if(!isset($exe))
             <div class="bg-gray-200 divide-y divide-gray-200">
                 <div class="grid grid-cols-12">
                     <div class="p-5 bg-white overflow-hidden col-span-1">
-                        <p class="text-base"><i class="text-orange-500 fas fa-bell"></i></p>
+                        <p class="p-4 text-base"><i class="text-orange-500 fas fa-bell"></i></p>
                     </div>
                     <div class="p-5 bg-white overflow-hidden col-span-5">
                         <p class="text-base">texte</p>
                         <p class="text-xs">test texte</p>
                     </div>
                     <div class="p-5 bg-white overflow-hidden col-span-6">
-                        <p class="text-base">Derniere annonce</p>
+                        <p class="mt-4 text-base">Derniere annonce</p>
                     </div>
                 </div>
             </div>
 
             <div class="grid grid-cols-12">
                 <div class="p-5 bg-white overflow-hidden col-span-1">
-                    <p class="text-base"><i class="text-orange-500 fas fa-bell"></i></p>
+                    <p class="p-4 text-base"><i class="text-orange-500 fas fa-bell"></i></p>
                 </div>
                 <div class="p-5 bg-white overflow-hidden col-span-5">
                     <p class="text-base">texte</p>
                     <p class="text-xs">test texte</p>
                 </div>
                 <div class="p-5 bg-white overflow-hidden col-span-6">
-                    <p class="text-base">Derniere annonce</p>
+                    <p class="mt-4 text-base">Derniere annonce</p>
                 </div>
             </div>
 
             <div class="grid grid-cols-12">
                 <div class="p-5 bg-white overflow-hidden col-span-1">
-                    <p class="text-base"><i class="text-orange-500 fas fa-bell"></i></p>
+                    <p class="p-4 text-base"><i class="text-orange-500 fas fa-bell"></i></p>
                 </div>
                 <div class="p-5 bg-white overflow-hidden col-span-5">
                     <p class="text-base">texte</p>
                     <p class="text-xs">test texte</p>
                 </div>
                 <div class="p-5 bg-white overflow-hidden col-span-6">
-                    <p class="text-base">Derniere annonce</p>
+                    <p class="mt-4 text-base">Derniere annonce</p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-span-1">
-        <div class="w-full h-screen bg-red-500"></div>
+    <div class="col-span-1 pt-20">   
+            <div class="bg-white overflow-hidden shadow divide-y divide-gray-200 m-15">
+                <div class="bg-gray-500 px-4 py-5 sm:px-6">
+                <h1 class="text-lg font-bold">Titre</h1>
+                </div>
+                <div class="px-4 py-5 sm:p-6">
+                    <div class="grid grid-cols-3 gap-4">
+                        <div><i class="text-orange-500 fas fa-address-book"></i></div>
+                        <div>Pub</div>
+                        <div>Contenu</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white overflow-hidden shadow divide-y divide-gray-200 m-15">
+                <div class="bg-gray-500 px-4 py-5 sm:px-6">
+                <h1 class="text-lg font-bold">Titre</h1>
+                </div>
+                <div class="px-4 py-5 sm:p-6">
+                    <div class="grid grid-cols-3 gap-4">
+                        <div><i class="text-orange-500 fas fa-address-book"></i></div>
+                        <div>Pub</div>
+                        <div>Contenu</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white overflow-hidden shadow divide-y divide-gray-200 m-15">
+                <div class="bg-gray-500 px-4 py-5 sm:px-6">
+                <h1 class="text-lg font-bold">Titre</h1>
+                </div>
+                <div class="px-4 py-5 sm:p-6">
+                    <div class="grid grid-cols-3 gap-4">
+                        <div><i class="text-orange-500 fas fa-address-book"></i></div>
+                        <div>Pub</div>
+                        <div>Contenu</div>
+                    </div>
+                </div>
+        </div>
     </div>
 </div>
 
