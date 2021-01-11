@@ -137,8 +137,8 @@ if(!isset($exe))
             </div>
         </div>
     </div>
-    <div class="col-span-1 pt-20">   
-            <div class="bg-white overflow-hidden shadow divide-y divide-gray-200 m-15">
+    <div class="col-span-1">   
+            <div class="bg-white overflow-hidden shadow divide-y divide-gray-200 mt-8 mx-15">
                 <div class="bg-gray-500 px-4 py-5 sm:px-6">
                 <h1 class="text-lg font-bold">Titre</h1>
                 </div>
@@ -150,7 +150,7 @@ if(!isset($exe))
                     </div>
                 </div>
             </div>
-            <div class="bg-white overflow-hidden shadow divide-y divide-gray-200 m-15">
+            <div class="bg-white overflow-hidden shadow divide-y divide-gray-200 mt-8 mx-15">
                 <div class="bg-gray-500 px-4 py-5 sm:px-6">
                 <h1 class="text-lg font-bold">Titre</h1>
                 </div>
@@ -162,7 +162,7 @@ if(!isset($exe))
                     </div>
                 </div>
             </div>
-            <div class="bg-white overflow-hidden shadow divide-y divide-gray-200 m-15">
+            <div class="bg-white overflow-hidden shadow divide-y divide-gray-200 mt-20 mx-15">
                 <div class="bg-gray-500 px-4 py-5 sm:px-6">
                 <h1 class="text-lg font-bold">Titre</h1>
                 </div>
@@ -173,7 +173,19 @@ if(!isset($exe))
                         <div>Contenu</div>
                     </div>
                 </div>
-        </div>
+            </div>
+            <div class="bg-white overflow-hidden shadow divide-y divide-gray-200 mt-8 mx-15">
+                <div class="bg-gray-500 px-4 py-5 sm:px-6">
+                <h1 class="text-lg font-bold">Titre</h1>
+                </div>
+                <div class="px-4 py-5 sm:p-6">
+                    <div class="grid grid-cols-3 gap-4">
+                        <div><i class="text-orange-500 fas fa-address-book"></i></div>
+                        <div>Pub</div>
+                        <div>Contenu</div>
+                    </div>
+                </div>
+            </div>
     </div>
 </div>
 
