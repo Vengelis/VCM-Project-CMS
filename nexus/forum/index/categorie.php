@@ -44,17 +44,23 @@ if(!isset($exe))
 </nav>
 
 <ul class="divide-y mx-60">
-  <li class="py-4">
-  <div class=" md:flex md:items-center md:justify-between ">
+<li class="py-4">
+<div class=" md:flex md:items-center md:justify-between ">
   <div class="flex-1 min-w-0">
     <h2 class="mt-5 pb-2 text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
       Titre de la Catégorie
     </h2>
     <h3 class="text-sm">Description de la catégorie, quels topic y mettre et quel est son but</h3>
   </div>
+  <div class="max-w-7xl">
+            <button type="button" class="mt-5 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-400 hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Create Topic
+            </button>
+        </div>  
 </div>
-  </li>
+</li>
 </ul>
+
 
 
 <ul class="divide-y mx-60 mt-2 mb-14">        
@@ -66,6 +72,7 @@ if(!isset($exe))
             <h1 class="text-base font-bold text-white col-span-2">Derniers Messages</h1>
             </div>
         </div-->
+
 
         <div class="rounded-lg py-3 px-6 bg-gray-200 divide-y divide-gray-300">
             <div class="grid grid-cols-12 ">
@@ -135,6 +142,5 @@ if(!isset($exe))
                 </div>
             </div>
         </div>
-        
 </ul>
 
