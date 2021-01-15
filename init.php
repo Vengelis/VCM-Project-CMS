@@ -49,7 +49,7 @@ $init = array(
         "forum" => array(
             "index" => array(
                 "accueil"       => "nexus/forum/index/accueil.php",
-                "topic"         => "nexus/forum/index/topic.php"
+                "categorie"         => "nexus/forum/index/categorie.php"
             )
         )
     )
