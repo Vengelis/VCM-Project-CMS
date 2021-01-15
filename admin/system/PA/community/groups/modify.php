@@ -28,8 +28,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         $getLastInt = executeQuery("SELECT lastUpdate FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups WHERE ID = ?", array($gid));
         $getLastInt['lastUpdate']++;
         $updateGroup = executeQuery("UPDATE ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups SET lastUpdate = ? WHERE ID = ?", array($getLastInt['lastUpdate'], $gid));
-
     }
+    /*?><script>
+        document.location.replace("index.php?app=admin&mod=community&ctl=groups&cmpt=modify&?gid=<?php echo $gid ; ?>");
+    </script><?php*/
 }
 ?>
 <div class="bg-gray-700 overflow-hidden w-full">
@@ -51,8 +53,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
       <form action="#" method="POST">
         <div>
             <label for="smtp_respond_mail" class="block font-medium text-gray-900">Nom du groupe</label>
-            <?php $getValue = executeQuery("SELECT value FROM ".$GLOBALS['GC']['sql_tbl_prefix']."system_config_global WHERE paramKey = 'smtp_respond_mail'", array()); ?>
-            <input type="text" name="smtp_respond_mail" id="smtp_respond_mail" value="<?php echo $getValue['value'] ; ?>" class="p-1 pl-2 mt-1 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md">
+            <?php $getValue = executeQuery("SELECT Name FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups WHERE ID = ?", array($gid)); ?>
+            <input type="text" name="smtp_respond_mail" id="smtp_respond_mail" value="<?php echo $getValue['Name'] ; ?>" class="p-1 pl-2 mt-1 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md">
         </div>
 
         <div class="hidden sm:block" aria-hidden="true">
@@ -71,9 +73,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                 <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
               <div class="flex text-sm text-gray-600">
-                <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-orange-600 hover:text-orange-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-orange-500">
+                <label for="fileUpload" class="relative cursor-pointer bg-white rounded-md font-medium text-orange-600 hover:text-orange-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-orange-500">
                   <span>Envoyer un fichier</span>
-                  <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                  <input id="fileUpload" name="fileUpload" type="file" class="sr-only">
                 </label>
                 <p class="pl-1">ou glisser et déposer le fichier ici</p>
               </div>
@@ -181,7 +183,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                             ?>
                             <div class="pb-2 mb-2  border-b border-gray-200">
                                 <h3 class="text-lg leading-6 font-medium text-gray-900">
-                                    <i class="fas fa-window-maximize text-gray-600"></i> <?php echo $data['module'] ; ?>
+                                    <i class="fas fa-window-maximize text-gray-600"></i> <?php echo ucfirst($data['module']) ; ?>
                                 </h3>
                             </div>
                             <div class="sm:grid sm:grid-cols-2 sm:gap-4">
@@ -193,7 +195,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                                     array_push($ctlAlreadyPassed, $dataCtl['controller']);
                                     ?>
                                     <div class="mb-5 ml-3">
-                                        <span class="text-gray-900 ml-2"><i class="fas fa-window-restore text-gray-600"></i> <?php echo $dataCtl['controller'] ; ?></span>
+                                        <span class="text-gray-900 ml-2"><i class="fas fa-window-restore text-gray-600"></i> <?php echo ucfirst($dataCtl['controller']) ; ?></span>
                                         <div class="mt-2">
                                         <?php
                                         $perms = executeQuery("SELECT ID, description, permKey FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_permissions WHERE application = ? AND module = ? AND controller = ?", array($app, $data['module'], $dataCtl['controller']), false);
@@ -208,7 +210,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                                             <div class="ml-8">
                                                 <label class="inline-flex items-center">
                                                     <input type="checkbox" name="permscheck[<?php echo $dataPerm['ID']; ?>]" class="form-checkbox text-orange-600" <?php echo $checked; ?>>
-                                                    <span class="ml-2"><i class="fas fa-cogs text-gray-600"></i> <?php echo $dataPerm['description']; ?></span>
+                                                    <span class="ml-2"><i class="fas fa-cogs text-gray-600"></i> <?php echo ucfirst($dataPerm['description']); ?></span>
                                                 </label>
                                             </div>
                                             <?php
@@ -243,6 +245,42 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     </div>
   </div>
 </div>
+
+<script>
+var fileobj;
+function upload_file(e) {
+    e.preventDefault();
+    fileobj = e.dataTransfer.files[0];
+    ajax_file_upload(fileobj);
+}
+ 
+function file_explorer() {
+    document.getElementById('fileUpload').click();
+    document.getElementById('fileUpload').onchange = function() {
+        fileobj = document.getElementById('fileUpload').files[0];
+        ajax_file_upload(fileobj);
+    };
+}
+ 
+function ajax_file_upload(file_obj) {
+    if(file_obj != undefined) {
+        var form_data = new FormData();                  
+        form_data.append('file', file_obj);
+        $.ajax({
+            type: 'POST',
+            url: 'ajax.php',
+            contentType: false,
+            processData: false,
+            data: form_data,
+            success:function(response) {
+                alert(response);
+                $('#fileUpload').val('');
+            }
+        });
+    }
+}
+</script>
+
 <?php
 include("system/designer/PA_menu_bottom.php");
 ?>
