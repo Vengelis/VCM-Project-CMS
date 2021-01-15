@@ -66,6 +66,13 @@ $init = array(
                 "va"            => "nexus/core/index/validate_account.php",
                 "disconnect"    => "system/actions/forms/disconnect.php"
             )
+        ),
+        "blog" => array(
+            "index" => array(
+                "index"         => "nexus/blog/index/index.php",
+                "view"          => "nexus/blog/index/view.php",
+                "edit"          => "nexus/blog/index/edit.php"
+            )
         )
     )
 );
