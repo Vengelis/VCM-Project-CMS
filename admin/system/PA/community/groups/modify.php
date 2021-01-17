@@ -247,9 +247,9 @@ $getValue = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."comm
                 ?>
                 <div class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200 mb-3">
                     <div class="px-4 py-4 sm:px-6 bg-gray-100">
-                        <h4 class="text-lg font-medium leading-6 text-red-600"><?php echo $displayApp ?></h4>
+                        <h4 class="text-lg font-medium leading-6 text-red-600"><?php echo $displayApp ?><a onclick="showHidePanel('perm<?php echo $displayApp ; ?>');"><i class="ml-2 fas fa-eye text-gray-400 hover:text-orange-600"></i></a></h4>
                     </div>
-                    <div class="px-4 py-5 sm:p-6">
+                    <div id="perm<?php echo $displayApp ; ?>" class="px-4 py-5 sm:p-6">
                     <?php
                     $mods = executeQuery("SELECT module FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_permissions WHERE application = ?", array($app), false);
                     $modsAlreadyPassed = array();
@@ -325,7 +325,22 @@ $getValue = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."comm
     </div>
   </div>
 </div>
+<script>
 
+function showHidePanel(panel)
+{
+    if(document.getElementById(panel).classList.contains("hidden"))
+    {
+        document.getElementById(panel).classList.remove('hidden');
+    }
+    else
+    {
+        document.getElementById(panel).classList.add('hidden');
+    }
+    
+}
+
+</script>
 <?php
 include("system/security/js_drag_drop_controller.php");
 include("system/designer/PA_menu_bottom.php");
