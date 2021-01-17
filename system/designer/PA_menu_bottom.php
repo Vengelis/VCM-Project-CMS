@@ -47,9 +47,16 @@ if(!isset($exe))
             {
               if($module != "core")
               {
-                echo '<p class="text-base text-white">'.ucfirst($module).'</p>';
-                include("nexus/".$module."/admin/PA_Module_MenuList.php");
-                echo "<br>";
+                  echo '<p class="text-base text-white">'.ucfirst($module).'</p>';
+                  if(!file_exists("nexus/".$module."/admin/PA_Module_MenuList.php"))
+                  {
+                    echo '<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800"> ERROR:PA_MODULE_MENULIST </span>';
+                  }
+                  else
+                  {
+                    include("nexus/".$module."/admin/PA_Module_MenuList.php");
+                  }
+                  echo "<br>";
               }
             }
           ?>

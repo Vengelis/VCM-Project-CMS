@@ -13,11 +13,64 @@ else
     $gid = htmlentities($_GET['gid']);
 }
 
+$size = "0 KB";
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
+    if(!empty($_FILES))
+    {
+        $notUpload = false;
+
+        $arr_file_types = ['image/png', 'image/gif', 'image/jpg', 'image/jpeg'];
+    
+        if (!(in_array($_FILES['file']['type'], $arr_file_types))) {
+            $notUpload = true;
+        }
+        
+        if (!file_exists('system/medias/images/temp')) {
+            mkdir('system/medias/images/temp', 0777);
+        }
+        if(!$notUpload)
+        {
+            move_uploaded_file($_FILES['file']['tmp_name'], 'system/medias/images/temp/'.$_FILES['file']['name']);
+            unlink($_FILES['file']['tmp_name']);
+            
+        }
+    }
+
     if(isset($_POST['pa_visuels']))
     {
-        
+        $groupName = htmlentities($_POST['groupName']);
+        executeQuery("UPDATE ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups SET Name = ? WHERE ID = ?", array($groupName, $gid));
+
+        if(htmlentities($_POST['iconeUpdated']) == "true")
+        {
+            if($_POST['haveIcone'] == "NULL")
+            {
+                executeQuery("UPDATE ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups SET icone = ? WHERE ID = ?", array(NULL, $gid));
+            }
+            else
+            {
+                $icone = htmlentities($_POST['haveIcone']);
+                rename('system/medias/images/temp/'.$icone, 'system/medias/images/groups/'.$icone);
+                $size = FileSizeConvert(filesize('system/medias/images/groups/'.$icone));
+                executeQuery("UPDATE ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups SET icone = ? WHERE ID = ?", array($icone, $gid));
+            }
+            
+        }
+
+        executeQuery("UPDATE ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups SET code = ? WHERE ID = ?", array($_POST["code"], $gid));
+        if(isset($_POST["preferCode"]))
+        {
+            executeQuery("UPDATE ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups SET  	isIcone = ? WHERE ID = ?", array(0, $gid));
+        }
+        else
+        {
+            executeQuery("UPDATE ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups SET  	isIcone = ? WHERE ID = ?", array(1, $gid));
+        }
+
+        $getLastInt = executeQuery("SELECT lastUpdate FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups WHERE ID = ?", array($gid));
+        $getLastInt['lastUpdate']++;
+        $updateGroup = executeQuery("UPDATE ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups SET lastUpdate = ? WHERE ID = ?", array($getLastInt['lastUpdate'], $gid));
     }
     if(isset($_POST['pa_perms']))
     {
@@ -29,10 +82,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         $getLastInt['lastUpdate']++;
         $updateGroup = executeQuery("UPDATE ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups SET lastUpdate = ? WHERE ID = ?", array($getLastInt['lastUpdate'], $gid));
     }
+    
     /*?><script>
         document.location.replace("index.php?app=admin&mod=community&ctl=groups&cmpt=modify&?gid=<?php echo $gid ; ?>");
     </script><?php*/
 }
+$getValue = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups WHERE ID = ?", array($gid));
 ?>
 <div class="bg-gray-700 overflow-hidden w-full">
     <div class="px-4 py-5 sm:p-6">
@@ -52,9 +107,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     <div class="mt-5 md:mt-0 md:col-span-4">
       <form action="#" method="POST">
         <div>
-            <label for="smtp_respond_mail" class="block font-medium text-gray-900">Nom du groupe</label>
-            <?php $getValue = executeQuery("SELECT Name FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups WHERE ID = ?", array($gid)); ?>
-            <input type="text" name="smtp_respond_mail" id="smtp_respond_mail" value="<?php echo $getValue['Name'] ; ?>" class="p-1 pl-2 mt-1 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md">
+            <label for="groupName" class="block font-medium text-gray-900">Nom du groupe</label>
+            <input type="text" name="groupName" id="groupName" value="<?php echo $getValue['Name'] ; ?>" class="p-1 pl-2 mt-1 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md">
         </div>
 
         <div class="hidden sm:block" aria-hidden="true">
@@ -64,36 +118,53 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         </div>
 
         <div class="sm:col-span-6 mt-5 sm:mt-0">
-          <label for="cover_photo" class="block font-medium text-gray-900">
-            Bannière image du groupe
-          </label>
-          <div class="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-            <div class="space-y-1 text-center">
-              <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-              <div class="flex text-sm text-gray-600">
-                <label for="fileUpload" class="relative cursor-pointer bg-white rounded-md font-medium text-orange-600 hover:text-orange-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-orange-500">
-                  <span>Envoyer un fichier</span>
-                  <input id="fileUpload" name="fileUpload" type="file" class="sr-only">
-                </label>
-                <p class="pl-1">ou glisser et déposer le fichier ici</p>
-              </div>
-              <p class="text-xs text-gray-500">
-                Extensions autorisées: PNG, JPG et GIF
-              </p>
+            <label for="cover_photo" class="block font-medium text-gray-900">
+                Bannière image du groupe
+            </label>
+            <div class="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md" id="drop_file_zone" ondrop="upload_file(event)" ondragover="return false">
+                <div class="space-y-1 text-center">
+                    <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                        <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <div class="flex text-sm text-gray-600" id="drag_upload_file">
+                        <label for="fileUpload" class="relative cursor-pointer bg-white rounded-md font-medium text-orange-600 hover:text-orange-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-orange-500">
+                            <span>Envoyer un fichier</span>
+                            <input id="fileUpload" name="fileUpload" type="button" class="sr-only" onclick="file_explorer();">
+                        </label>
+                        <p class="pl-1">ou glisser et déposer le fichier ici</p>
+                        <input type="file" id="selectfile" style="display: none">
+                    </div>
+                    <p class="text-xs text-gray-500">
+                        Extensions autorisées: PNG, JPG, JPEG et GIF
+                    </p>
+                </div>
             </div>
-          </div>
         </div>
         <div class="flex mt-2">
             <div class="mr-4 w-2/5 flex-shrink-0">
-                <svg class="h-16 w-full border border-gray-300 bg-white text-gray-300" preserveAspectRatio="none" stroke="currentColor" fill="none" viewBox="0 0 200 200" aria-hidden="true">
-                <path vector-effect="non-scaling-stroke" stroke-width="1" d="M0 0l200 200M0 200L200 0" />
-                </svg>
+                <input type="text" id="iconeUpdated" name="iconeUpdated" style="display: none" value="false">
+                <input type="text" id="haveIcone" name="haveIcone" style="display: none" value="<?php echo $getValue['icone']; ?>">
+                <?php 
+                    if(file_exists('system/medias/images/groups/'.$getValue['icone']) && !is_null($getValue['icone']))
+                    {
+                        $size = filesize('system/medias/images/groups/'.$getValue['icone']);
+                        echo '<img class="object-contain h-48 w-full h-full" id="image" src="system/medias/images/groups/'.$getValue['icone'].'">';
+                    }
+                    else
+                    {
+                        echo '<img class="object-contain h-48 w-full h-full" id="image" src="">';
+                    }
+                ?>
             </div>
             <div>
-                <h4 class="text-base font-bold">Aucune image attachée</h4>
-                <p class="mt-1 text-sm">Taille: 0ko <a href="#" class="sm:ml-5 text-red-600"><i class="fas fa-trash-alt"></i> Supprimer</a></p>
+                <?php
+                if(is_null($getValue['icone']))
+                {
+                    $getValue['icone'] = "Aucune image attachée";
+                }
+                ?>
+                <h4 class="text-base font-bold" id="fileName"><?php echo $getValue['icone'] ; ?></h4>
+                <p class="mt-1 text-sm">Taille: <span id="size"><?php echo $size ; ?></span> <a href="#" onclick="deleteFile();" class="sm:ml-5 text-red-600"><i class="fas fa-trash-alt"></i> Supprimer</a></p>
             </div>
         </div>
 
@@ -105,12 +176,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
         <label class="block mt-5 sm:mt-0">
             <span class="text-gray-900 font-medium">Formatage par code HTML</span>
-            <textarea class="form-textarea mt-1 block w-full" rows="3" placeholder="Enter some long form content."></textarea>
+            <textarea name="code" class="form-textarea mt-1 block w-full" rows="3" placeholder="Enter some long form content."><?php echo $getValue['code'] ; ?></textarea>
         </label>
 
         <div class="block mt-3">
             <label class="inline-flex items-center">
-                <input type="checkbox" class="form-checkbox text-orange-600" checked>
+                <?php
+                if($getValue['isIcone'])
+                {
+                    echo '<input type="checkbox" name="preferCode" class="form-checkbox text-orange-600">';
+                }
+                else
+                {
+                    echo '<input type="checkbox" name="preferCode" class="form-checkbox text-orange-600" checked>';
+                }
+                ?>
                 <span class="ml-2 text-sm">Privilégier le formatage code que le formatage par image</span>
             </label>
         </div>
@@ -246,41 +326,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
   </div>
 </div>
 
-<script>
-var fileobj;
-function upload_file(e) {
-    e.preventDefault();
-    fileobj = e.dataTransfer.files[0];
-    ajax_file_upload(fileobj);
-}
- 
-function file_explorer() {
-    document.getElementById('fileUpload').click();
-    document.getElementById('fileUpload').onchange = function() {
-        fileobj = document.getElementById('fileUpload').files[0];
-        ajax_file_upload(fileobj);
-    };
-}
- 
-function ajax_file_upload(file_obj) {
-    if(file_obj != undefined) {
-        var form_data = new FormData();                  
-        form_data.append('file', file_obj);
-        $.ajax({
-            type: 'POST',
-            url: 'ajax.php',
-            contentType: false,
-            processData: false,
-            data: form_data,
-            success:function(response) {
-                alert(response);
-                $('#fileUpload').val('');
-            }
-        });
-    }
-}
-</script>
-
 <?php
+include("system/security/js_drag_drop_controller.php");
 include("system/designer/PA_menu_bottom.php");
 ?>
