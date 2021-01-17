@@ -83,9 +83,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         $updateGroup = executeQuery("UPDATE ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups SET lastUpdate = ? WHERE ID = ?", array($getLastInt['lastUpdate'], $gid));
     }
     
-    /*?><script>
-        document.location.replace("index.php?app=admin&mod=community&ctl=groups&cmpt=modify&?gid=<?php echo $gid ; ?>");
-    </script><?php*/
+    ?><script>
+        document.location.replace("index.php?app=admin&mod=community&ctl=groups&cmpt=dashboard");
+    </script><?php
 }
 $getValue = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups WHERE ID = ?", array($gid));
 ?>

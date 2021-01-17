@@ -19,7 +19,7 @@ include("system/designer/PA_menu_top.php");
         <i class="fas fa-file-import m-1"></i>
         importer une liste de groupes
     </a>
-    <a href="index.php?app=admin&mod=community&ctl=members&cmpt=create" class="mx-1 inline-flex items-center px-2 py-1 border border-transparent shadow-sm text-xs leading-4 font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
+    <a href="index.php?app=admin&mod=community&ctl=groups&cmpt=create" class="mx-1 inline-flex items-center px-2 py-1 border border-transparent shadow-sm text-xs leading-4 font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
         <i class="fas fa-plus m-1"></i>
         Créer un groupe
     </a>
@@ -56,7 +56,24 @@ include("system/designer/PA_menu_top.php");
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <?php echo $data['code'] ; ?>
+                            <?php 
+                              if($data['isIcone'] == 1)
+                              {
+                                if(file_exists('system/medias/images/groups/'.$data['icone']) && !is_null($data['icone']))
+                                {
+                                  echo '<img class="object-contain w-1/5 h-full" id="image" src="system/medias/images/groups/'.$data['icone'].'">';
+                                }
+                                else
+                                {
+                                  echo '<span class="px-2 inline-flex text-base leading-5 font-semibold bg-red-600 text-white items-center p-2 "><i class="fas fa-exclamation-triangle mr-2"></i> Erreur de chargement de l\'image. L\'image est innexistante. </span>';
+                                }
+                                
+                              }
+                              else
+                              {
+                                echo $data['code'] ;
+                              }
+                             ?>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <a href="index.php?app=admin&mod=community&ctl=groups&cmpt=modify&gid=<?php echo $data['ID'] ; ?>" class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
