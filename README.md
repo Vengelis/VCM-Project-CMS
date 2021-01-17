@@ -1,5 +1,5 @@
 <p align="center"><img width=400px src="https://vlogis-dev.ovh/vcmTitle.png"></p>
-<h2 align="center">>VCM Project - CMS</h2>
+<h2 align="center">VCM Project - CMS</h2>
 <p align="center">
     VCM Prject - CMS est un site configurable destiné à de multiples projets qui ont besoin d'un site web à déploiement rapide.
 </p>
@@ -29,6 +29,6 @@ N'hésitez pas à venir discuter et tester les nouveautés le [Discord Officiel]
 #### 👥 Développeurs
 - Référent et développeur Front/Back-End : [Vengelis](https://github.com/Vengelis) (Vengelis_ le FISC#5949)
 - Développeur Front-End : [Gladys](https://github.com/Gladys86-cloud) (Gladys_#5303)
-- Développeur Front-End : [Théo](https://github.com/FantomeAce), ancien développeur (La Douane (Théo)#9406)
+- Développeur Front-End : [Théo](https://github.com/FantomeAce) (La Douane (Théo)#9406)
 #### 👷 Contributeurs
 
