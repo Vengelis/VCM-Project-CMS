@@ -6,8 +6,14 @@ tempGlobalConf.php
 ###< --- Images --- >####
 
 system/medias/images/memberProfils/
+system/medias/images/temp/
+system/medias/images/groups/
 
 ###< --- Local Test --- >####
 
 test/
+
+###< --- InDev --->###
+
+admin/installateur/
 

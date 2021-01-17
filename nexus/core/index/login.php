@@ -34,7 +34,15 @@ if(isset($_POST['submited']))
     }
     elseif($response == "SUCCESS:CONNECTED")
     {
-        $_SESSION['WantToLiveInfinite'] = $_POST['remember_me'];
+        if(!isset($_POST['remember_me']))
+        {
+          $remember = "off";
+        }
+        else
+        {
+          $remember = "on";
+        }
+        $_SESSION['WantToLiveInfinite'] = $remember;
         ?><script>
         document.location.replace("index.php");
         </script><?php
@@ -70,7 +78,7 @@ if(isset($_POST['submited']))
     </h2>
     <p class="mt-2 text-center text-sm text-gray-600 max-w">
       Ou
-      <a href="#" class="font-medium text-orange-600 hover:text-orange-500">
+      <a href="index.php?app=nexus&mod=core&ctl=index&cmpt=register" class="font-medium text-orange-600 hover:text-orange-500">
         s'enregistrer
       </a>
     </p>

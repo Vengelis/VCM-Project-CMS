@@ -1,10 +1,4 @@
 <?php
-if(!isset($exe))
-{
-    ?><script>
-    document.location.replace("../../../index.php?app=system&mod=errors&ctl=display&cmpt=security");
-    </script><?php
-}
 
 /**
  * PHPMailer - PHP email creation and transport class.
@@ -27,6 +21,12 @@ if(!isset($exe))
 
 namespace PHPMailer\PHPMailer;
 
+if(!isset($exe))
+{
+    ?><script>
+    document.location.replace("../../../index.php?app=system&mod=errors&ctl=display&cmpt=security");
+    </script><?php
+}
 /**
  * PHPMailer - PHP email creation and transport class.
  *

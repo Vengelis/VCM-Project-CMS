@@ -19,13 +19,30 @@ $init = array(
                 "page_create"   => "nexus/pages/admin/create.php",
                 "page_modify"   => "nexus/pages/admin/modify.php",
                 "page_delete"   => "nexus/pages/admin/delete.php",
-                "page_params"   => "nexus/pages/admin/parameters.php"
+                "page_params"   => "nexus/pages/admin/parameters.php",
+
+                "sets_global"   => "admin/system/PA/system/settings/globals_settings.php",
+                "sets_policy"   => "admin/system/PA/system/settings/policy.php",
+                "sets_mails"    => "admin/system/PA/system/settings/emails.php",
+                "sets_lo_re"    => "admin/system/PA/system/settings/login_register.php",
+                "sets_2FA"      => "admin/system/PA/system/settings/2FA.php",
+                "sets_adv"      => "admin/system/PA/system/settings/advanced_settings.php"
             )
         ),
         "community" => array(
             "members" => array(
                 "dashboard"     => "admin/system/PA/community/members/dashboard.php",
-                "create"        => "admin/system/PA/community/members/create.php"
+                "create"        => "admin/system/PA/community/members/create.php",
+                "delete"        => "admin/system/PA/community/members/delete.php"
+            ),
+            "groups" => array(
+                "dashboard"     => "admin/system/PA/community/groups/dashboard.php",
+                "modify"        => "admin/system/PA/community/groups/modify.php",
+                "create"        => "admin/system/PA/community/groups/create.php",
+                "delete"        => "admin/system/PA/community/groups/delete.php"
+            ),
+            "moderation" => array(
+                "spam_prevent"  => "admin/system/PA/community/moderation/spamPrevention.php"
             )
         )
     ),
@@ -34,7 +51,9 @@ $init = array(
             "display" => array(
                 "security"      => "system/errors/display/security.php",
                 "404"           => "system/errors/display/404.php",
-                "vp"            => "system/errors/display/violation_permission.php"
+                "vp"            => "system/errors/display/violation_permission.php",
+                "rv"            => "system/errors/display/robot_verification.php",
+                "ae"            => "system/errors/display/argument_error.php"
             )
         )
     ),
@@ -43,7 +62,16 @@ $init = array(
             "index" => array(
                 "iv1"           => "nexus/core/index/nexus_index_t1.php",
                 "login"         => "nexus/core/index/login.php",
+                "register"      => "nexus/core/index/register.php",
+                "va"            => "nexus/core/index/validate_account.php",
                 "disconnect"    => "system/actions/forms/disconnect.php"
+            )
+        ),
+        "blog" => array(
+            "index" => array(
+                "index"         => "nexus/blog/index/index.php",
+                "view"          => "nexus/blog/index/view.php",
+                "edit"          => "nexus/blog/index/edit.php"
             )
         )
     )

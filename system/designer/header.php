@@ -6,6 +6,7 @@ if(!isset($exe))
     </script><?php
 }
 verifySession();
+compareSession();
 ?>
 <script>
 function changeNavBar() {
@@ -163,7 +164,7 @@ function notifDropdown() {
                 <div id="profilDropdown" class="hidden absolute right-0 mt-2 bg-white rounded-md shadow-lg overflow-hidden z-20 w-56 divide-y divide-gray-200">
                     <div class="py-1">  
                         <a href="index.php?app=nexus&mod=core&ctl=index&cmpt=login" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Connexion</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Inscription</a>
+                        <a href="index.php?app=nexus&mod=core&ctl=index&cmpt=register" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Inscription</a>
                     </div>
                 </div>
                 <?php

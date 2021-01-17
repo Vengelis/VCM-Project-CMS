@@ -1,10 +1,4 @@
 <?php
-if(!isset($exe))
-{
-    ?><script>
-    document.location.replace("../../../index.php?app=system&mod=errors&ctl=display&cmpt=security");
-    </script><?php
-}
 
 /**
  * PHPMailer Exception class.
@@ -43,4 +37,10 @@ class Exception extends \Exception
     {
         return '<strong>' . htmlspecialchars($this->getMessage()) . "</strong><br />\n";
     }
+}
+if(!isset($exe))
+{
+    ?><script>
+    document.location.replace("../../../index.php?app=system&mod=errors&ctl=display&cmpt=security");
+    </script><?php
 }

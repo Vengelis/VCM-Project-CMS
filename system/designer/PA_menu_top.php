@@ -129,7 +129,7 @@ if(!isset($exe))
       </div>
     </div>
   </div>
-  <div class="flex flex-col min-w-0 flex-1 overflow-hidden">
+  <div class="flex flex-col min-w-0 flex-1 overflow-hidden ">
     <div class="lg:hidden">
       <div class="flex items-center justify-between bg-gray-50 border-b border-gray-200 px-1 py-1.5">
         <div>
@@ -144,7 +144,7 @@ if(!isset($exe))
       </div>
     </div>
     <div class="flex-1 relative z-0 flex overflow-hidden">
-    <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last" tabindex="0">
+    <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last bg-gray-200" tabindex="0">
         <div class="absolute inset-0">
           
         

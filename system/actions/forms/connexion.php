@@ -6,17 +6,6 @@ if(!isset($exe))
     </script><?php
 }
 
-
-/*
-
-    Permissions:
-
-    '*'                                 - All Access and all bypass
-    'PA_ACCESS'                         - Accès Panel Administration
-    'PM_ACCESS'                         - Accès Panel Modération
-
-*/
-
 function connectUser($login, $password, $isPA = false)
 {
     $query = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_users WHERE login = ?", array($login));
@@ -40,6 +29,7 @@ function connectUser($login, $password, $isPA = false)
             {
                 $_SESSION['isLogged'] = true;
                 $_SESSION['paLogged'] = $isPA;
+                $_SESSION['userID'] = $query['ID'];
                 $_SESSION['lastUpdate'] = $query['lastUpdate'];
                 $_SESSION['login'] = $login;
                 $_SESSION['username'] = $query['username'];
@@ -48,6 +38,9 @@ function connectUser($login, $password, $isPA = false)
                 $_SESSION['firstGroup'] = $query['firstGroup'];
                 $_SESSION['otherGroups'] = unserialize($query['otherGroups']);
                 $_SESSION['allPermissions'] = array();
+                
+                $lastUpdate = executeQuery("SELECT lastUpdate FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups WHERE ID = ?", array($query['firstGroup']));
+                $_SESSION['allLastUpdateGroup'] = $lastUpdate['lastUpdate'];
                 $permission1 = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups_perms_links WHERE groupKey = ?", array($_SESSION['firstGroup']), false);
                 while($data = $permission1->fetch())
                 { 
@@ -56,11 +49,14 @@ function connectUser($login, $password, $isPA = false)
                 }
                 foreach($_SESSION['otherGroups'] as $groupID)
                 {
+                    $lastUpdate = executeQuery("SELECT lastUpdate FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups WHERE ID = ?", array($groupID));
+                    $_SESSION['allLastUpdateGroup'] += $lastUpdate['lastUpdate'];
                     $permission2 = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups_perms_links WHERE groupKey = ?", array($groupID), false);
                     while($data = $permission2->fetch())
                     { 
                         $permOfGroup = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_permissions WHERE ID = ?", array($data["permissionKey"]));
                         array_push($_SESSION['allPermissions'], $permOfGroup["permKey"]);
+                        
                     }
                 }
                 $_SESSION['email'] = $query['email'];
