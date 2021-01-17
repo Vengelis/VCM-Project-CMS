@@ -5,7 +5,34 @@ if(!isset($exe))
     document.location.replace("../../index.php?app=system&mod=errors&ctl=display&cmpt=security");
     </script><?php
 }
+
+function sessionParams()
+{
+    $secure = false; 
+    $httponly = true;
+    $samesite = 'lax';
+    //$maxlifetime = 43200;
+
+    if(PHP_VERSION_ID < 70300) {
+        session_set_cookie_params('/; samesite='.$samesite, $_SERVER['HTTP_HOST'], $secure, $httponly);
+    } else {
+        session_set_cookie_params([
+            //'lifetime' => $maxlifetime,
+            'path' => '/',
+            'domain' => $_SERVER['HTTP_HOST'],
+            'secure' => $secure,
+            'httponly' => $httponly,
+            'samesite' => $samesite
+        ]);
+    }
+}
+if(!isset($_SESSION['TTL']))
+{
+    sessionParams();
+}
+
 session_start();
+
 if(isset($_SESSION['WantToLiveInfinite']))
 {
     if($_SESSION['WantToLiveInfinite'] == "on")
@@ -24,8 +51,11 @@ if(isset($_SESSION['WantToLiveInfinite']))
         }
         else
         {
-            $_SESSION['TTL'] = time();
-            session_regenerate_id(true);
+            if(time() - $_SESSION['TTL'] > 1800)
+            {
+                $_SESSION['TTL'] = time();
+                session_regenerate_id(true);
+            }
         }
     }
 }
