@@ -11,7 +11,6 @@
  * @ github: https://github.com/Vengelis/VCM-Project-CMS/tree/master
  */
 
-
 if(!isset($exe))
 {
     ?><script>
