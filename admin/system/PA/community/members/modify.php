@@ -334,7 +334,17 @@ $getValue = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."comm
                             <div class="mt-1 lg:hidden">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 inline-block rounded-full overflow-hidden h-12 w-12" aria-hidden="true">
-                                        <img class="rounded-full h-full w-full" src="system/medias/images/memberProfils/default.png" alt="">
+                                        <?php 
+                                            if(file_exists('system/medias/images/memberProfils/'.$getValue['imageProfil']) && !is_null($getValue['imageProfil']))
+                                            {
+                                                $size = filesize('system/medias/images/memberProfils/'.$getValue['imageProfil']);
+                                                echo '<img class="rounded-full h-full w-full" id="image" src="system/medias/images/memberProfils/'.$getValue['imageProfil'].'">';
+                                            }
+                                            else
+                                            {
+                                                echo '<img class="rounded-full h-full w-full" id="image" src="">';
+                                            }
+                                        ?>
                                     </div>
                                     <div class="ml-5 rounded-md shadow-sm">
                                         <div class="group relative border border-gray-300 rounded-md py-2 px-3 flex items-center justify-center hover:bg-gray-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-light-blue-500">
@@ -349,7 +359,17 @@ $getValue = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."comm
                             </div>
 
                             <div class="hidden relative rounded-sm overflow-hidden lg:block">
-                                <img class="relative rounded-sm w-40 h-40" src="system/medias/images/memberProfils/default.png" alt="">
+                                <?php 
+                                    if(file_exists('system/medias/images/memberProfils/'.$getValue['imageProfil']) && !is_null($getValue['imageProfil']))
+                                    {
+                                        $size = filesize('system/medias/images/memberProfils/'.$getValue['imageProfil']);
+                                        echo '<img class="relative rounded-sm w-40 h-40" id="image" src="system/medias/images/memberProfils/'.$getValue['imageProfil'].'">';
+                                    }
+                                    else
+                                    {
+                                        echo '<img class="relative rounded-sm w-40 h-40" id="image" src="">';
+                                    }
+                                ?>
                                 <label for="user_photo" class="absolute inset-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center text-sm font-medium text-white opacity-0 hover:opacity-100 focus-within:opacity-100">
                                     <span>Changer</span>
                                     <span class="sr-only"> Photo d'utilisateur</span>
