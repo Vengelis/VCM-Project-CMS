@@ -11,6 +11,12 @@
  * @ github: https://github.com/Vengelis/VCM-Project-CMS/tree/master
  */
 
+if(!isset($exe))
+{
+    ?><script>
+    document.location.replace("../../../../index.php?app=system&mod=errors&ctl=display&cmpt=404");
+    </script><?php
+}
 
 include("system/security/PA_checkup.php");
 include("system/designer/PA_menu_top.php");
@@ -118,34 +124,6 @@ if(isset($_POST['sended']))
     
 }
 
-/* Code pour modifier un utilisateur
-
-if(!isset($_GET["form"]))
-{
-    $form = "profilForm";
-}
-else
-{
-    $form = "unknow";
-    $files = scandir('admin/system/PA/community/members/components/');
-    foreach($files as $file) {
-        if($file == $_GET["profilForm"].".php")
-        {
-            $form = $_GET["profilForm"];
-        }
-    }
-    if($form == "unknow")
-    {
-        $form == "profilForm";
-    }
-}
-
-<?php
-            include("admin/system/PA/community/members/components/".$form.".php");
-            ?>
-
-*/
-
 ?>
 
 <div class="bg-gray-700 overflow-hidden w-full">
@@ -155,54 +133,12 @@ else
     </div>
 </div>
 
-<!-- Création des formulaires de création de compte -->
 <input class="hidden" name="typeForm" id="typeForm" value="create"></input>
 
 <main class="mt-2">
     <div class="max-w-screen-xl mx-auto pb-6 px-4 sm:px-6 lg:pb-16 lg:px-8">
       <div class="bg-white rounded-lg shadow overflow-hidden">
         <div class="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
-        <!-- Pour la modification des comptes
-          <aside class="py-6 lg:col-span-3">
-            <nav>
-              <a href="index.php?app=admin&mod=community&ctl=members&cmpt=create&form=profilForm" class="bg-orange-50 border-orange-500 text-orange-700 hover:bg-orange-50 hover:text-orange-700 group border-l-4 px-3 py-2 flex items-center text-sm font-medium" aria-current="page">
-                <svg class="text-orange-500 group-hover:text-orange-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span class="truncate">
-                  Profile
-                </span>
-              </a>
-              
-              <a href="index.php?app=admin&mod=community&ctl=members&cmpt=create&form=passForm" class="border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium">
-                <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
-                </svg>
-                <span class="truncate">
-                  Mot de passe
-                </span>
-              </a>
-              <a href="index.php?app=admin&mod=community&ctl=members&cmpt=create&form=paramsForm" class="border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium">
-                <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <span class="truncate">
-                  Paramètres
-                </span>
-              </a>
-              <a href="#" class="border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium">
-                <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                </svg>
-                <span class="truncate">
-                  Notifications
-                </span>
-              </a>
-            </nav>
-          </aside>-->
-
-            <!-- Uniquement pour la création des comptes ! -->
             <div name="alertSuccess" id="alertSuccess" class="hidden rounded-md bg-green-50 p-4 lg:col-span-12 m-5">
                 <div class="flex">
                     <div class="flex-shrink-0">
@@ -225,7 +161,6 @@ else
             <div name="alertWrongExt" id="alertWrongExt" class="hidden rounded-md bg-red-50 p-4 lg:col-span-12 m-5">
                 <div class="flex">
                     <div class="flex-shrink-0">
-                    <!-- Heroicon name: x-circle -->
                     <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
                     </svg>
@@ -245,7 +180,6 @@ else
             <div name="alertBox" id="alertBox" class="hidden rounded-md bg-red-50 p-4 lg:col-span-12 m-5">
                 <div class="flex">
                     <div class="flex-shrink-0">
-                    <!-- Heroicon name: x-circle -->
                     <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
                     </svg>
@@ -263,7 +197,6 @@ else
                 </div>
             </div>
             <form action="#" class="divide-y divide-gray-200 lg:col-span-12" method="POST" enctype="multipart/form-data">
-                <!-- Profile section -->
                 <div class="py-6 px-4 sm:p-6 lg:pb-8">
                     <div>
                     <h2 class="text-lg leading-6 font-medium text-gray-900">Profile</h2>

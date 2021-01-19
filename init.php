@@ -46,6 +46,7 @@ $init = array(
             "members" => array(
                 "dashboard"     => "admin/system/PA/community/members/dashboard.php",
                 "create"        => "admin/system/PA/community/members/create.php",
+                "modify"        => "admin/system/PA/community/members/modify.php",
                 "delete"        => "admin/system/PA/community/members/delete.php"
             ),
             "groups" => array(
