@@ -1,4 +1,17 @@
-<?php
+<?php 
+ 
+ /**
+ * @ Project: VCM Project CMS 
+
+ * @ Author: Vengelis (Gabriel T.) 
+
+ * @ Create Time: 2021-01-03 19:30:56
+ * @ Modified by: Vengelis (Gabriel T.)
+ * @ Modified time: 2021-01-19 19:57:27 
+ * @ github: https://github.com/Vengelis/VCM-Project-CMS/tree/master
+ */
+
+
 if(!isset($exe))
 {
     ?><script>
@@ -11,13 +24,13 @@ function sessionParams()
     $secure = false; 
     $httponly = true;
     $samesite = 'lax';
-    //$maxlifetime = 43200;
+    $maxlifetime = 34819200; // 13 mouths
 
     if(PHP_VERSION_ID < 70300) {
-        session_set_cookie_params('/; samesite='.$samesite, $_SERVER['HTTP_HOST'], $secure, $httponly);
+        session_set_cookie_params($maxlifetime, '/; samesite='.$samesite, $_SERVER['HTTP_HOST'], $secure, $httponly);
     } else {
         session_set_cookie_params([
-            //'lifetime' => $maxlifetime,
+            'lifetime' => $maxlifetime,
             'path' => '/',
             'domain' => $_SERVER['HTTP_HOST'],
             'secure' => $secure,
