@@ -11,6 +11,12 @@
  * @ github: https://github.com/Vengelis/VCM-Project-CMS/tree/master
  */
 
+if(!isset($exe))
+{
+    ?><script>
+    document.location.replace("../../../../index.php?app=system&mod=errors&ctl=display&cmpt=404");
+    </script><?php
+}
 
 include("system/security/PA_checkup.php");
 include("system/designer/PA_menu_top.php");
