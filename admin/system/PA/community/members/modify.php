@@ -96,10 +96,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
             $safeFirstGroup = htmlentities($_POST['firstGroup']);
             $safeEmail = htmlentities($_POST['email']);
 
-            executeQuery("UPDATE ".$GLOBALS['GC']['sql_tbl_prefix']."community_users SET username = ?, description = ? , firstGroup = ?, otherGroups = ?, email = ?, imageProfil = ? WHERE ID = ?", array($safeUsername, $safeDescription, $safeFirstGroup, $og, $safeEmail, htmlentities($userImageProfil), $mid));
-            $getLastInt = executeQuery("SELECT lastUpdate FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups WHERE ID = ?", array($mid));
+            $response = executeQuery("UPDATE ".$GLOBALS['GC']['sql_tbl_prefix']."community_users SET username = ?, description = ? , firstGroup = ?, otherGroups = ?, email = ?, imageProfil = ? WHERE ID = ?", array($safeUsername, $safeDescription, $safeFirstGroup, $og, $safeEmail, htmlentities($userImageProfil), $mid));
+            $getLastInt = executeQuery("SELECT lastUpdate FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_users WHERE ID = ?", array($mid));
             $getLastInt['lastUpdate']++;
-            $updateGroup = executeQuery("UPDATE ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups SET lastUpdate = ? WHERE ID = ?", array($getLastInt['lastUpdate'], $mid));
+            $updateGroup = executeQuery("UPDATE ".$GLOBALS['GC']['sql_tbl_prefix']."community_users SET lastUpdate = ? WHERE ID = ?", array($getLastInt['lastUpdate'], $mid));
+
+            
             $alertSuccess = true;
             
         }
@@ -116,8 +118,45 @@ $getValue = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."comm
     </div>
 </div>
 
+<div id="modalDeleteAccount" class="fixed z-10 inset-0 overflow-y-auto hidden">
+  <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
 
-<input class="hidden" name="typeForm" id="typeForm" value="create"></input>
+    <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+      <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+    </div>
+
+    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+    <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+      <div class="sm:flex sm:items-start">
+        <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+          <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+        </div>
+        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+          <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
+            Suppression du compte
+          </h3>
+          <div class="mt-2">
+            <p class="text-sm text-gray-500">
+              Vous êtes sur le point de supprimer le compte définitivement. Cette procédure est irréversible après la fin de la dernière étape.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+        <a href="index.php?app=admin&mod=community&ctl=members&cmpt=delete&uid=<?php echo $mid; ?>" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+          Engager l'étape 1 / 2
+        </a>
+        <button onclick="hideDeleteModal()" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm">
+          Annuler
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <main class="mt-2">
     <div class="max-w-screen-xl mx-auto pb-6 px-4 sm:px-6 lg:pb-16 lg:px-8">
@@ -149,6 +188,11 @@ $getValue = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."comm
                     </svg>
                     <span class="truncate">
                     Modération
+                    </span>
+                </a>
+                <a href="#" onclick="showDeleteModal()" class="border-transparent text-red-600 hover:bg-red-50 hover:text-red-900 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-bold">
+                    <span class="truncate">
+                    Supprimer le compte
                     </span>
                 </a>
                 </nav>
@@ -337,11 +381,11 @@ $getValue = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."comm
                                             { 
                                                 if($data["ID"] == $primaryGroup)
                                                 {
-                                                    echo '<option id="'.$data["ID"].'" selected> '.$data["Name"].'</option>';
+                                                    echo '<option value="'.$data["ID"].'" selected> '.$data["Name"].'</option>';
                                                 }
                                                 else
                                                 {
-                                                    echo '<option id="'.$data["ID"].'"> '.$data["Name"].'</option>';
+                                                    echo '<option value="'.$data["ID"].'"> '.$data["Name"].'</option>';
                                                 }
                                             }
                                         ?>
@@ -365,7 +409,7 @@ $getValue = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."comm
                                                     {
                                                         if($data["ID"] != $primaryGroup)
                                                         {
-                                                            echo '<option id="'.$data["ID"].'" selected> '.$data["Name"].'</option>';
+                                                            echo '<option value="'.$data["ID"].'" selected> '.$data["Name"].'</option>';
                                                         }
                                                     }
                                                 }
@@ -383,7 +427,7 @@ $getValue = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."comm
                                                 }
                                                 if(!$stop)
                                                 {
-                                                    echo '<option id="'.$data["ID"].'"> '.$data["Name"].'</option>';
+                                                    echo '<option value="'.$data["ID"].'"> '.$data["Name"].'</option>';
                                                 }
                                             }
                                         ?>
@@ -399,7 +443,7 @@ $getValue = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."comm
                                 Sauvegarder
                             </button>
                             <a href="index.php?app=admin&mod=community&ctl=members&cmpt=dashboard" class="bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                                Annuler
+                                Retour
                             </a>
                         </div>
                     </div>
@@ -410,6 +454,12 @@ $getValue = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."comm
     </div>
   </main>
 <script>
+function hideDeleteModal(){
+    document.getElementById("modalDeleteAccount").classList.add('hidden');
+}
+function showDeleteModal(){
+    document.getElementById("modalDeleteAccount").classList.remove('hidden');
+}
 function showPanel(panel) {
     document.getElementById(panel).classList.remove('hidden');
     document.getElementById("display-" + panel).classList.remove('border-transparent');
