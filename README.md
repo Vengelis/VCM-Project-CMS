@@ -31,4 +31,4 @@ N'hésitez pas à venir discuter et tester les nouveautés le [Discord Officiel]
 - Développeur Front-End : [Gladys](https://github.com/Gladys86-cloud) (Gladys_#5303)
 - Développeur Front-End : [Théo](https://github.com/FantomeAce) (La Douane (Théo)#9406)
 #### 👷 Contributeurs
-
+- Contributeur : [Skylyxx](https://github.com/Skylyxx) (Skylyxx#8816)
