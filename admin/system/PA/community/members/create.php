@@ -80,9 +80,9 @@ if(isset($_POST['sended']))
         else
         {
             $pdpRndString = "IPM-".$_POST['username'].generateRandomString()."-";
-            $userImageProfil = $pdpRndString.$_FILES['user_photo']["name"];
-            move_uploaded_file($_FILES['user_photo']["tmp_name"], "system/medias/images/memberProfils/".$pdpRndString.$_FILES['user_photo']["name"]);
-            if (!file_exists("system/medias/images/memberProfils/".$pdpRndString.$_FILES['user_photo']["name"])) 
+            $userImageProfil = $pdpRndString.killAccent($_FILES['user_photo']["name"]);
+            move_uploaded_file($_FILES['user_photo']["tmp_name"], "system/medias/images/memberProfils/".$userImageProfil);
+            if (!file_exists("system/medias/images/memberProfils/".$userImageProfil)) 
             {
                 $userImageProfil = "default.png";
             }
