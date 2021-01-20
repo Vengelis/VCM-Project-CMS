@@ -1,4 +1,23 @@
-<?php
+<?php 
+ 
+ /**
+ * @ Project: VCM Project CMS 
+
+ * @ Author: Vengelis (Gabriel T.) 
+
+ * @ Create Time: 2021-01-03 19:30:56
+ * @ Modified by: Vengelis (Gabriel T.)
+ * @ Modified time: 2021-01-19 22:36:03 
+ * @ github: https://github.com/Vengelis/VCM-Project-CMS/tree/master
+ */
+
+if(!isset($exe))
+{
+    ?><script>
+    document.location.replace("../../../../index.php?app=system&mod=errors&ctl=display&cmpt=404");
+    </script><?php
+}
+
 include("system/security/PA_checkup.php");
 include("system/designer/PA_menu_top.php");
 ?>
@@ -84,6 +103,8 @@ include("system/designer/PA_menu_top.php");
                 $query = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_users", array(), false);
                 while($data = $query->fetch())
                 { 
+                  if($data['login'] != "VisitorSystemUser")
+                  {
                     ?>
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap">
@@ -119,8 +140,17 @@ include("system/designer/PA_menu_top.php");
                         <td class="px-6 py-4 whitespace-nowrap">
                             
                             <?php 
-                                $group = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."groups WHERE ID = ?", array($data['firstGroup']));
-                                echo $group['code'] ;
+                                $group = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups WHERE ID = ?", array($data['firstGroup']));
+                                if($group['isIcone'] == 0){
+                                  echo $group['code'];
+                                } else {
+                                  if(file_exists('system/medias/images/groups/'.$group['icone']) && !is_null($group['icone'])){
+                                    echo '<img class="object-contain w-3/5 h-full" id="image" src="system/medias/images/groups/'.$group['icone'].'">';
+                                  } else {
+                                    echo '<span class="px-2 inline-flex text-base leading-5 font-semibold bg-red-600 text-white items-center p-2 "><i class="fas fa-exclamation-triangle mr-2"></i> Erreur de chargement de l\'image. L\'image est innexistante. </span>';
+                                  }
+                                }
+                                
 
                                 $secondaryGroup = unserialize($data['otherGroups']);
                             ?>
@@ -129,7 +159,7 @@ include("system/designer/PA_menu_top.php");
                                 $endedGroup = end($secondaryGroup);
                                 foreach($secondaryGroup as $ogroup)
                                 {
-                                    $oogroup = executeQuery("SELECT Name FROM ".$GLOBALS['GC']['sql_tbl_prefix']."groups WHERE ID = ?", array($ogroup));
+                                    $oogroup = executeQuery("SELECT Name FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups WHERE ID = ?", array($ogroup));
                                     if($ogroup != $endedGroup) echo $oogroup['Name'].", " ;
                                     else echo $oogroup['Name'];
                                     
@@ -140,7 +170,7 @@ include("system/designer/PA_menu_top.php");
                             <?php echo $data['lastIP'] ; ?>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <a class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                            <a href="index.php?app=admin&mod=community&ctl=members&cmpt=modify&mid=<?php echo $data['ID']; ?>" class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                                 <i class="fas fa-eye m-1"></i>
                             </a>
                             <a class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
@@ -151,7 +181,7 @@ include("system/designer/PA_menu_top.php");
                             </a>
                         </td>
                     </tr>
-            <?php } ?>
+            <?php }} ?>
           </tbody>
         </table>
       </div>

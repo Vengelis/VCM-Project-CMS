@@ -1,4 +1,17 @@
-<?php
+<?php 
+ 
+ /**
+ * @ Project: VCM Project CMS 
+
+ * @ Author: Vengelis (Gabriel T.) 
+
+ * @ Create Time: 2021-01-15 17:07:29
+ * @ Modified by: Vengelis (Gabriel T.)
+ * @ Modified time: 2021-01-19 22:38:15 
+ * @ github: https://github.com/Vengelis/VCM-Project-CMS/tree/master
+ */
+
+
 if(!isset($exe))
 {
     ?><script>

@@ -1,4 +1,23 @@
-<?php
+<?php 
+ 
+ /**
+ * @ Project: VCM Project CMS 
+
+ * @ Author: Vengelis (Gabriel T.) 
+
+ * @ Create Time: 2021-01-04 15:44:04
+ * @ Modified by: Vengelis (Gabriel T.)
+ * @ Modified time: 2021-01-19 22:34:45 
+ * @ github: https://github.com/Vengelis/VCM-Project-CMS/tree/master
+ */
+
+if(!isset($exe))
+{
+    ?><script>
+    document.location.replace("../../../../index.php?app=system&mod=errors&ctl=display&cmpt=404");
+    </script><?php
+}
+
 include("system/security/PA_checkup.php");
 include("system/designer/PA_menu_top.php");
 
@@ -53,9 +72,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         executeQuery("INSERT INTO ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups VALUES (NULL,0,?,?,?,?,?)", array(htmlentities($_POST['groupName']), htmlentities($_POST['groupName']),$prefCode,$icone,$_POST['code']));
     }
     
-    /*?><script>
+    ?><script>
         document.location.replace("index.php?app=admin&mod=community&ctl=groups&cmpt=dashboard");
-    </script><?php*/
+    </script><?php
 }
 ?>
 <div class="bg-gray-700 overflow-hidden w-full">

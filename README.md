@@ -6,7 +6,7 @@
 
 ## 🚀 Installation
 - Vous devez vous munir d'un serveur web
-- Uploadez la [dernière version stable](https://github.com/Vengelis/VCM-Project-CMS/releases) du CMS via un logiciel de transphère de fichier sur votre serveur web
+- Uploadez la [dernière version stable](https://github.com/Vengelis/VCM-Project-CMS/releases) du CMS via un logiciel de transfert de fichier sur votre serveur web
 - C'est parti ! Accédez dès maintenant au panel d'installation en vous rendant sur votre site.
 
 ## 🔍 Rapport de bug et suggestions
@@ -19,7 +19,7 @@ Vous pouvez vous rendre dans le [menu des issues](https://github.com/Vengelis/VC
 ## 🔨 Développement et contributions
 Nos Pull Request sont ouvertes à toute contribution ! Vous pouvez [créer un fork](https://github.com//Vengelis/VCM-Project-CMS/fork) (= une copie) de ce dépôt et y faire vos modifications. Voici quelques informations utiles avant de créer une Pull Request :
 
-- 🏷️ Créez votre PR vers la branche `dev` uniquement
+- 🏷️ Créez votre PR vers la branche `pa_dev` uniquement
 - 📦 Ajoutez le moins de dépendance possible (si des dépendances sont faites, avertissez les référents du projet)
 - ⚡️ Vérifiez qu'aucune vulnérabilité n'est présente
 
