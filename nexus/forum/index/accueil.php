@@ -42,7 +42,7 @@ if(!isset($exe))
         <div class="m-8 bg-white overflow-hidden shadow divide-y divide-gray-200">
         
             <div class="px-4 py-5 sm:px-6 bg-gray-500">
-                <h1 class="text-lg font-bold text-white">Topic</h1>
+                <h1 class="text-lg font-bold text-white">Categorie</h1>
             </div>
 
             <div class="bg-gray-200 divide-y divide-gray-200">
@@ -92,7 +92,7 @@ if(!isset($exe))
         <div class="m-8 bg-white overflow-hidden shadow divide-y divide-gray-200">
     
             <div class="px-4 py-5 sm:px-6 bg-gray-500">
-                <h1 class="text-lg font-bold text-white">Topic</h1>
+                <h1 class="text-lg font-bold text-white">Categorie</h1>
             </div>
 
             <div class="bg-gray-200 divide-y divide-gray-200">

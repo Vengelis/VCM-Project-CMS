@@ -85,7 +85,7 @@ if(!isset($exe))
                     <p>titre du message</p>
                     <p class="text-xs ml-1">Par Admin, 00/00/00</p>                  
                 </div>
-                <div class="py-2 px-2 bg-grey overflow-hidden col-span-1">
+                <div class="py-2 pl-2 bg-grey overflow-hidden col-span-2">
                     <p class="text-sm">0 réponse</p>
                     <p class="text-sm">0 vues</p>
                 </div>
@@ -107,7 +107,7 @@ if(!isset($exe))
                     <p>titre du message</p>
                     <p class="text-xs ml-1">Par Admin, 00/00/00</p>                  
                 </div>
-                <div class="py-2 px-2 bg-grey overflow-hidden col-span-1">
+                <div class="py-2 px-2 bg-grey overflow-hidden col-span-2">
                     <p class="text-sm">0 réponse</p>
                     <p class="text-sm">0 vues</p>
                 </div>
@@ -129,7 +129,7 @@ if(!isset($exe))
                     <p>titre du message</p>
                     <p class="text-xs ml-1">Par Admin, 00/00/00</p>                  
                 </div>
-                <div class="py-2 px-2 bg-grey overflow-hidden col-span-1">
+                <div class="py-2 px-2 bg-grey overflow-hidden col-span-2">
                     <p class="text-sm">0 réponse</p>
                     <p class="text-sm">0 vues</p>
                 </div>

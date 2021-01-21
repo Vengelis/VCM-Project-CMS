@@ -50,3 +50,24 @@ if(!isset($exe))
     </li>
   </ol>
 </nav>
+
+<ul class="divide-y mx-40">
+  <li class="py-4">
+  <div class=" md:flex md:items-center md:justify-between ">
+   <div class="flex-1 min-w-0">
+      <div>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 bg-gray-400 pb-3">
+          <label for="email" class="block text-sm font-medium text-black font-bold">Titre du Topic:</label>
+          <input type="text" name="email" id="email" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="inserez un titre">
+        </div>
+        <div class="max-w-7xl bg-white pb-3 border-2 border-gray-400 border-opacity-100 pb-60">
+        <h3 class=" ml-2">Ecrivez le contenu du Topic ici</h3>
+        </div>
+        <button type="button" class=" mt-2 inline-flex items-center px-4 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        Validez
+        </button>
+      </div>
+    </div>
+  </div>
+  </li>
+</ul>
