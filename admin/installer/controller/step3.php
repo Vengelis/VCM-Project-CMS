@@ -2,7 +2,7 @@
 
 require("temp_global_conf.php");
 
-$continue = false;
+$continue = true;
 
 $errorUsername = false;
 $errorLogin = false;
