@@ -1,0 +1,2 @@
+<a href="index.php?app=admin&mod=system&ctl=PA&cmpt=page_dash" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Pages</a>
+<a href="index.php?app=admin&mod=system&ctl=PA&cmpt=page_params" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Paramètres</a>

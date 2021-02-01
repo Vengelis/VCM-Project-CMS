@@ -88,6 +88,15 @@ $init = array(
                 "view"          => "nexus/blog/index/view.php",
                 "edit"          => "nexus/blog/index/edit.php"
             )
+        ),
+        "forum" => array(
+            "index" => array(
+                "accueil"       => "nexus/forum/index/accueil.php",
+                "categorie"         => "nexus/forum/index/categorie.php",
+                "creation"         => "nexus/forum/index/creation.php",
+                "topic"         => "nexus/forum/index/topic.php",
+
+            )
         )
     )
 );
