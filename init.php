@@ -59,6 +59,13 @@ $init = array(
                 "spam_prevent"  => "admin/system/PA/community/moderation/spamPrevention.php",
                 "warn_sys"      => "admin/system/PA/community/moderation/warningSystem.php"
             )
+        ),
+        "homepage" => array(
+            "editor" => array (
+                "models"            => "admin/system/PA/homepage/models.php",
+                "building"          => "admin/system/PA/homepage/building.php",
+                "pages"             => "admin/system/PA/homepage/pages.php"
+            )
         )
     ),
     "system" => array(
@@ -84,7 +91,7 @@ $init = array(
         ),
         "blog" => array(
             "index" => array(
-                "index"         => "nexus/blog/index/index.php",
+                "home"         => "nexus/blog/index/index.php",
                 "view"          => "nexus/blog/index/view.php",
                 "edit"          => "nexus/blog/index/edit.php"
             )

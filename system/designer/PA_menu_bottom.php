@@ -105,9 +105,9 @@ if(!isset($exe))
           <p class="font-mono text-base text-gray-200">Accueil</p>
           <br>
           <p class="text-base text-white">Gestion de l'accueil</p>
-          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Modèle Index</a>
-          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Construction de l'accueil</a>
-          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Pages</a>
+          <a href="index.php?app=admin&mod=homepage&ctl=editor&cmpt=models" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Modèle Index</a>
+          <a href="index.php?app=admin&mod=homepage&ctl=editor&cmpt=building" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Construction de l'accueil</a>
+          <a href="index.php?app=admin&mod=homepage&ctl=editor&cmpt=pages" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Pages</a>
         </div>
 
         <div id="subMenu5" class="hidden absolute inset-0 py-3 px-3 sm:px-3 lg:px-4 bg-gray-600 border-l border-gray-700">
