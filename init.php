@@ -56,7 +56,8 @@ $init = array(
                 "delete"        => "admin/system/PA/community/groups/delete.php"
             ),
             "moderation" => array(
-                "spam_prevent"  => "admin/system/PA/community/moderation/spamPrevention.php"
+                "spam_prevent"  => "admin/system/PA/community/moderation/spamPrevention.php",
+                "warn_sys"      => "admin/system/PA/community/moderation/warningSystem.php"
             )
         )
     ),

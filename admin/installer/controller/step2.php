@@ -38,11 +38,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         $continue=false;
         $errorPort=true;
     }
-    /*if(TryDbConnexion($host, $dbname, $user, $password, $port) == 'ERROR:ERROR_BDD_CONNECTION')
+    if(TryDbConnexion($host, $dbname, $user, $password, $port) == 'ERROR:ERROR_BDD_CONNECTION')
     {
         $continue=false;
         $errorHost=true;
-    }*/
+    }
     if($continue)
     {
         $input = '<?php

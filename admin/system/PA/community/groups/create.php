@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         }
         if(!$notUpload)
         {
-            move_uploaded_file($_FILES['file']['tmp_name'], 'system/medias/images/temp/'.$_FILES['file']['name']);
+            move_uploaded_file($_FILES['file']['tmp_name'], 'system/medias/images/temp/'.killAccent($_FILES['file']['name']));
             unlink($_FILES['file']['tmp_name']);
             
         }
@@ -55,8 +55,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
             else
             {
                 $icone = htmlentities($_POST['haveIcone']);
-                rename('system/medias/images/temp/'.$icone, 'system/medias/images/groups/'.$icone);
-                $size = FileSizeConvert(filesize('system/medias/images/groups/'.$icone));
+                rename('system/medias/images/temp/'.$icone, 'system/medias/images/groups/'.killAccent($icone));
+                $size = FileSizeConvert(filesize('system/medias/images/groups/'.killAccent($icone)));
             }
             
         }

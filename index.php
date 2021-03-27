@@ -29,7 +29,6 @@ else
     
     require_once("globalConf.php");
     $GLOBALS['GC'] = $GC;
-
     if(empty($GLOBALS['GC']))
     {
         $ctli = "home";

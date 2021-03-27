@@ -57,7 +57,9 @@ $continue = true;
                 <div class="mt-2 ml-3">
                     <div class="my-1">
                     <?php
-                    if(PHP_VERSION_ID < 700000)
+
+                    if(PHP_VERSION_ID < 70000)
+
                     {
                         $continue = false;
                         ?>
