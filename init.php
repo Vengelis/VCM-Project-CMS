@@ -77,7 +77,7 @@ $init = array(
                 "iv1"           => "nexus/core/index/nexus_index_t1.php",
                 "login"         => "nexus/core/index/login.php",
                 "register"      => "nexus/core/index/register.php",
-                "va"            => "nexus/core/index/validate_account.php",
+                "va"            => "nexus/core/index/validate_accoun.php",
                 "disconnect"    => "system/actions/forms/disconnect.php"
             )
         ),
@@ -86,6 +86,15 @@ $init = array(
                 "index"         => "nexus/blog/index/index.php",
                 "view"          => "nexus/blog/index/view.php",
                 "edit"          => "nexus/blog/index/edit.php"
+            )
+        ),
+        "forum" => array(
+            "index" => array(
+                "index"       => "nexus/forum/index/accueil.php",
+                "categorie"         => "nexus/forum/index/categorie.php",
+                "creation"         => "nexus/forum/index/creation.php",
+                "topic"         => "nexus/forum/index/topic.php",
+
             )
         )
     )
