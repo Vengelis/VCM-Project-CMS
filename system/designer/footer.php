@@ -17,7 +17,11 @@ if(!isset($exe))
     ?><script>
     document.location.replace("../../index.php?app=system&mod=errors&ctl=display&cmpt=security");
     </script><?php
+
 }
+
+if($_GET["app"] != "admin")
+{
 ?>
 <!--<div class="h-3/4"></div>-->
 <footer class="bg-gray-50 overflow-hidden shadow rounded-lg mt-3">
@@ -28,3 +32,6 @@ if(!isset($exe))
         </div>
     </div>
 </footer>
+<?php
+}
+?>

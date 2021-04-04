@@ -33,7 +33,7 @@ if(!isset($exe))
           <p class="text-base text-white">Fournitures</p>
           <a href="index.php?app=admin&mod=system&ctl=PA&cmpt=mod_dash" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Modules</a>
           <a href="index.php?app=admin&mod=system&ctl=PA&cmpt=pl_dash" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Plugins</a>
-          <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Editeur de menu</a>
+          <a href="index.php?app=admin&mod=system&ctl=PA&cmpt=menu_editor" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">Editeur de menu</a>
           <a href="#" class="text-gray-300 hover:bg-gray-800 group flex items-center px-2 py-1 text-sm rounded-md">API REST</a>
           <br>
           <p class="text-base text-white">Paramètres</p>
