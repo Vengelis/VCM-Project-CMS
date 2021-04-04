@@ -218,9 +218,9 @@ function getEmailFormatToken($token)
 												<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="center"><![endif]--><img
 													align="center" alt="Alternate text" border="0"
 													class="center autowidth"
-													src="https://vlogis-dev.ovh/VCM_Project_Logo.png"
+													src="https://image.noelshack.com/fichiers/2021/10/1/1615192290-default.png"
 													style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 187px; display: block;"
-													title="Alternate text" width="187" />
+													title="VCM Icone" width="187" />
 												<!--[if mso]></td></tr></table><![endif]-->
 											</div>
 											<!--[if (!mso)&(!IE)]><!-->

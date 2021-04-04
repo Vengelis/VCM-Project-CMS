@@ -56,7 +56,15 @@ $init = array(
                 "delete"        => "admin/system/PA/community/groups/delete.php"
             ),
             "moderation" => array(
-                "spam_prevent"  => "admin/system/PA/community/moderation/spamPrevention.php"
+                "spam_prevent"  => "admin/system/PA/community/moderation/spamPrevention.php",
+                "warn_sys"      => "admin/system/PA/community/moderation/warningSystem.php"
+            )
+        ),
+        "homepage" => array(
+            "editor" => array (
+                "models"            => "admin/system/PA/homepage/models.php",
+                "building"          => "admin/system/PA/homepage/building.php",
+                "pages"             => "admin/system/PA/homepage/pages.php"
             )
         )
     ),
@@ -86,6 +94,15 @@ $init = array(
                 "index"         => "nexus/blog/index/index.php",
                 "view"          => "nexus/blog/index/view.php",
                 "edit"          => "nexus/blog/index/edit.php"
+            )
+        ),
+        "forum" => array(
+            "index" => array(
+                "index"       => "nexus/forum/index/accueil.php",
+                "categorie"         => "nexus/forum/index/categorie.php",
+                "creation"         => "nexus/forum/index/creation.php",
+                "topic"         => "nexus/forum/index/topic.php",
+
             )
         )
     )

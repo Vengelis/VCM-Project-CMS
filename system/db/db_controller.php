@@ -22,14 +22,25 @@ function dbConnexion()
 {
 	try 
 	{ 
-		return (new PDO('mysql:host='.$GLOBALS['GC']["sql_host"].';dbname='.$GLOBALS['GC']["sql_database"].'', $GLOBALS['GC']["sql_user"], $GLOBALS['GC']["sql_pass"])); 
+		return (new PDO('mysql:host='.$GLOBALS['GC']["sql_host"].';dbname='.$GLOBALS['GC']["sql_database"].';port='.$GLOBALS['GC']["sql_port"].'', $GLOBALS['GC']["sql_user"], $GLOBALS['GC']["sql_pass"])); 
 	}
 	catch (Exception $ex) 
 	{ 
 		return('ERROR:ERROR_BDD_CONNECTION'); 
 	}
 }
-
+function TryDbConnexion($Host, $DbName, $Login, $Password, $Port)
+{
+	try 
+	{ 
+		var_dump(new PDO('mysql:host='.$Host.';dbname='.$DbName.';port='.$Port.'', $Login, $Password));
+		return (new PDO('mysql:host='.$Host.';dbname='.$DbName.';port='.$Port.'', $Login, $Password)); 
+	}
+	catch (Exception $ex) 
+	{ 
+		return('ERROR:ERROR_BDD_CONNECTION'); 
+	}
+}
 function executeQuery($query, $args, $fetch = true)
 {
 	

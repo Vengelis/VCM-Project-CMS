@@ -55,7 +55,7 @@ if(!isset($exe))
                     </h3>
                     <div class="mt-2">
                         <p class="text-sm text-gray-500">
-                            Une erreur c'est produite lors de la vérification de l'identité de l'hôte. Veillez retenter la procédure. Si le problème perciste, contactez l'administrateur du site en stipulant l'erreur suivante: <?php echo $display ?>.
+                            Une erreur c'est produite lors de la vérification de l'identité de l'hôte. Veillez retenter la procédure. Si le problème perciste, contactez l'administrateur du site en stipulant l'erreur suivante: <?php //echo $display ?>.
                         </p>
                     </div>
                 </div>

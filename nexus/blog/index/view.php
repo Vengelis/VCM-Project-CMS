@@ -30,7 +30,7 @@ while($data = $query->fetch())
 
 ?>
   <div class="bg-white overflow-hidden shadow rounded-lg">
-	<img class="h-48 w-full" src="system/medias/images/blog/<?php echo $data['image'] ; ?>" alt="Workflow">
+	<img class="h-48 w-full" src="system/medias/images/memberProfils/<?php echo $data['image'] ; ?>" alt="Workflow">
 	<div class="p-5 w-full">
 		<p class="text-xl mb-3"><?php echo $data['title'] ; ?><a class="text-sm text-gray-500"><?php echo $data['date'] ; ?></a> </p>
 		<p class="text-base text-justify text-gray-500"><?php 

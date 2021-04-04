@@ -59,8 +59,7 @@ function verifySession()
     }
 }
 
-function reconnectUser()
-{
+function reconnectUser() {
     $query = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_users WHERE ID = ?", array($_SESSION["userID"]));
 
     $_SESSION['isLogged'] = $_SESSION['isLogged'];
@@ -78,18 +77,14 @@ function reconnectUser()
     $lastUpdate = executeQuery("SELECT lastUpdate FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups WHERE ID = ?", array($query['firstGroup']));
     $_SESSION['allLastUpdateGroup'] = $lastUpdate['lastUpdate'];
     $permission1 = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups_perms_links WHERE groupKey = ?", array($_SESSION['firstGroup']), false);
-    while($data = $permission1->fetch())
-    { 
+    while($data = $permission1->fetch()) { 
         $permOfGroup = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_permissions WHERE ID = ?", array($data["permissionKey"]));
         array_push($_SESSION['allPermissions'], $permOfGroup["permKey"]);
-    }
-    foreach($_SESSION['otherGroups'] as $groupID)
-    {
+    } foreach($_SESSION['otherGroups'] as $groupID) {
         $lastUpdate = executeQuery("SELECT lastUpdate FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups WHERE ID = ?", array($groupID));
         $_SESSION['allLastUpdateGroup'] += $lastUpdate['lastUpdate'];
         $permission2 = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups_perms_links WHERE groupKey = ?", array($groupID), false);
-        while($data = $permission2->fetch())
-        { 
+        while($data = $permission2->fetch()) { 
             $permOfGroup = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_permissions WHERE ID = ?", array($data["permissionKey"]));
             array_push($_SESSION['allPermissions'], $permOfGroup["permKey"]);
         }
