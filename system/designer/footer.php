@@ -20,8 +20,11 @@ if(!isset($exe))
 
 }
 
-if($_GET["app"] != "admin")
-{
+if(isset($_GET["app"])) {
+    $appF = htmlentities($_GET["app"]);
+} else {
+    $appF = false;
+    if($appF != "admin") {
 ?>
 <!--<div class="h-3/4"></div>-->
 <footer class="bg-gray-50 overflow-hidden shadow rounded-lg mt-3">
@@ -33,5 +36,6 @@ if($_GET["app"] != "admin")
     </div>
 </footer>
 <?php
+    }
 }
 ?>

@@ -27,6 +27,9 @@ require('system/security/file_upload_controller.php');          // File upload s
 // - Handler user profil
 require("system/userProfil/controller.php");
 require("system/userProfil/verify_profil_update.php");
+
+// - Handler Modal
+require("system/modal/controller.php");
 ?>
 
 
