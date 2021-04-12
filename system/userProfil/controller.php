@@ -62,11 +62,8 @@ function verifySession()
 function reconnectUser() {
     $query = executeQuery("SELECT * FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_users WHERE ID = ?", array($_SESSION["userID"]));
 
-    $_SESSION['isLogged'] = $_SESSION['isLogged'];
-    $_SESSION['paLogged'] = $_SESSION['paLogged'];
     $_SESSION['userID'] = $query['ID'];
     $_SESSION['lastUpdate'] = $query['lastUpdate'];
-    $_SESSION['login'] = $_SESSION['login'];
     $_SESSION['username'] = $query['username'];
     $_SESSION['description'] = $query['description'];
     $_SESSION['lastIP'] = $_SERVER['REMOTE_ADDR'];
@@ -89,13 +86,13 @@ function reconnectUser() {
             array_push($_SESSION['allPermissions'], $permOfGroup["permKey"]);
         }
     }
+
     $_SESSION['email'] = $query['email'];
     $_SESSION['banned'] = $query['banned'];
     $_SESSION['warnLevel'] = $query['warnLevel'];
     $_SESSION['imageProfil'] = $query['imageProfil'];
     $_SESSION['validateAccount'] = $query['validateAccount'];
 
-    $_SESSION['WantToLiveInfinite'] = $_SESSION['WantToLiveInfinite'];
     $_SESSION['TTL'] = time();
 }
 ?>

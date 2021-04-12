@@ -31,7 +31,7 @@ if(!isset($exe))
   }
 }
 </script>
-<div class="min-h-full flex overflow-hidden bg-white">
+<div class="h-paBar flex overflow-hidden bg-white">
   <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
   <div id="navAdmin" class="hidden">
     <div class="fixed inset-0 flex z-40">

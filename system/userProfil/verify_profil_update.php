@@ -21,15 +21,14 @@ if(!isset($exe))
 
 function compareSession()
 {
-    $updatedMember = executeQuery("SELECT lastUpdate FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_users WHERE ID = ?", array($_SESSION['userID']));
-    
+
     $response = executeQuery("SELECT lastUpdate FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups WHERE ID = ?", array($_SESSION['firstGroup']));
     $serverValue = $response['lastUpdate'];
 
     foreach($_SESSION['otherGroups'] as $groupID)
     {
         $response = executeQuery("SELECT lastUpdate FROM ".$GLOBALS['GC']['sql_tbl_prefix']."community_groups WHERE ID = ?", array($groupID));
-        $serverValue += $lastUpdate['lastUpdate'];
+        $serverValue += $response['lastUpdate'];
     }
 
     if($serverValue != $_SESSION['allLastUpdateGroup'])

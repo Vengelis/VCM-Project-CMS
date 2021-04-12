@@ -34,6 +34,8 @@ $init = array(
                 "page_delete"   => "nexus/pages/admin/delete.php",
                 "page_params"   => "nexus/pages/admin/parameters.php",
 
+                "menu_editor"   => "admin/system/PA/system/features/menu_editor.php",
+
                 "sets_global"   => "admin/system/PA/system/settings/globals_settings.php",
                 "sets_policy"   => "admin/system/PA/system/settings/policy.php",
                 "sets_mails"    => "admin/system/PA/system/settings/emails.php",
