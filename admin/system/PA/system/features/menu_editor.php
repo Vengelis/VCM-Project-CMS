@@ -22,10 +22,13 @@ if(isset($_GET["parent"])) {
 
 include("system/menu/controller.php");
 include("nexus/core/admin/menu/menuWidget_PA_Button_template.php");
+require("system/menu/displayPaButtons.php");
 
 include("system/security/PA_checkup.php");
 include("system/designer/PA_menu_top.php");
 ?>
+
+
 
 <div class="bg-gray-700 overflow-hidden w-full">
     <div class="px-4 py-5 sm:p-6">
@@ -39,16 +42,21 @@ include("system/designer/PA_menu_top.php");
 <div class="h-subContener flex overflow-hidden bg-white">
     <div class="flex flex-col min-w-0 flex-1 overflow-hidden">
         <div class="flex-1 relative z-0 flex overflow-hidden">
-            <main class="hidden lg:block flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last" tabindex="0">
+            <main class="hidden lg:block flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last bg-gray-200" tabindex="0">
                 <!-- Start main area-->
-                <div class="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-                    <div class="h-full border-2 border-gray-200 border-dashed rounded-lg"></div>
+                <div class="absolute inset-0 p-2">
+
+                    <?php buildMenuParams($parent) ?>
+
                 </div>
                 <!-- End main area -->
             </main>
             <aside class="hidden lg:block relative xl:order-first xl:flex xl:flex-col flex-shrink-0 w-96 border-r border-gray-200">
                 <!-- Start secondary column (hidden on smaller screens) -->
                 <div class="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
+
+                    <div class="text-xs text-gray-500">Publiez votre menu une fois que vous avez terminé vos modifications</div>
+
                     <a href="#" class="w-full text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 flex items-center px-3 py-2 text-sm font-medium rounded-md rounded-lg p-2 mb-3" aria-current="page">
                         <span class="w-full text-center">
                             <i class="fa fa-cloud-upload"></i>
@@ -57,7 +65,10 @@ include("system/designer/PA_menu_top.php");
                     </a>
                     <div class="border-2 border-gray-200 rounded-lg p-2">
 
-                        <?php require("system/menu/displayPaButtons.php"); ?>
+                        <input id="parentID" class="hidden" value="<?php echo $parent; ?>" />
+                        <nav class="space-y-1 menuDragDrop" aria-label="Sidebar">
+
+                        <?php buildMenuButton($parent) ?>
 
                         </nav>
                         <a onclick="launchModal('createButton')" class="text-orange-500 hover:bg-orange-50 hover:text-orange-900 flex items-center px-3 py-2 text-sm font-medium rounded-md border-2 border-orange-200 rounded-lg p-2 mt-5" aria-current="page">

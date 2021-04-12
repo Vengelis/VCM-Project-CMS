@@ -1,6 +1,9 @@
 <?php
 ?>
 <script>
+
+    // Drag and drop buttons
+
     const dragArea = document.querySelector(".menuDragDrop");
     var id = document.getElementById("parentID").value;
 
@@ -13,8 +16,6 @@
         actualiseMenu(id);
     }
 
-
-
     new Sortable(dragArea, {
         animation: 350
     });
@@ -23,8 +24,29 @@
         document.location.replace(link);
     }
 
+    // Params fonctions
 
+    function hideAllParams() {
+        var elements = document.getElementsByClassName("menuParam");
+        for (var i = 0; i < elements.length; i++) {
+            if(!elements[i].classList.contains("hidden")) {
+                elements[i].classList.add("hidden");
+            }
+        }
+        var elements = document.getElementsByClassName("dgbut");
+        for (var i = 0; i < elements.length; i++) {
+            if(!elements[i].classList.contains("hidden")) {
+                elements[i].classList.add("hidden");
+            }
+        }
+    }
 
+    function showParam(id) {
+        hideAllParams();
+        document.getElementById("menuButtonParam_"+id).classList.remove("hidden");
+    }
+
+    // Actualise bdd menu
 
     function actualiseMenu(id) {
 
@@ -46,7 +68,7 @@
             processData: false,
             data: form_data,
             success:function() {
-                console.log("yes");
+                console.log("DEBUG: button is modified");
             }
 
         });
